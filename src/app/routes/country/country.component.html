@@ -1,0 +1,26 @@
+<header class="{{ countryData.elementColor }}">
+  <div class="country-mode flex-group flex-start flex-nowrap flex-align-center">
+    @if (countryData?.flag) {
+    <div class="country-flag flex-center">
+      <img
+        class="flag {{countryData.flag}}"
+        [src]="'assets/images/flags/' + countryData.flag + '.svg'"
+        [alt]="countryData.name + ' flag'"
+      />
+    </div>
+    }
+    <div>
+      <h3 class="flex-group flex-start flex-nowrap">
+        <span>{{ countryData?.name }}</span>
+        @if (city) { <span class="light">: {{ city }}</span> }
+      </h3>
+      <strong class="{{ countryData.elementColor }}">{{ countryData.region }}</strong>
+    </div>
+  </div>
+
+  <app-tabs></app-tabs>
+</header>
+<section class="tabbed-content {{ countryData.elementColor }}">
+  <router-outlet (activate)="onChildActivate($event)"></router-outlet>
+</section>
+

@@ -1,0 +1,86 @@
+/* Utility class for center alignment in Kendo grid headers and cells */
+.text-center {
+  text-align: center !important;
+}
+/* Stronger vertical dashed lines for Revenue grid columns using ::ng-deep for Kendo internals */
+:host ::ng-deep .matters-modal kendo-grid .k-grid-table td,
+:host ::ng-deep .matters-modal kendo-grid .k-grid-table th {
+  border-right: 1px dashed #ebd9f3 !important;
+  box-shadow: none !important;
+}
+:host ::ng-deep .matters-modal kendo-grid .k-grid-table tr td:last-child,
+:host ::ng-deep .matters-modal kendo-grid .k-grid-table tr th:last-child {
+  border-right: none !important;
+}
+/* Light dashed vertical grid lines for Kendo grid columns (Revenue grid only) */
+.modal-grid-container .k-grid-table td,
+.modal-grid-container .k-grid-table th {
+  border-right: 2px dashed #b9b9d6 !important;
+  box-shadow: none !important;
+}
+.modal-grid-container .k-grid-table tr td:last-child,
+.modal-grid-container .k-grid-table tr th:last-child {
+  border-right: none !important;
+}
+.modal-grid-container .k-grid-content {
+  box-shadow: none !important;
+}
+/* Custom spinner overlay for revenue modal */
+.custom-spinner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.85);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.custom-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.spinner-ring {
+  margin-bottom: -44px;
+  z-index: 1;
+}
+.spinner-icon {
+  z-index: 2;
+  filter: drop-shadow(0 2px 4px rgba(136,78,160,0.15));
+}
+.spinner-label {
+  margin-top: 12px;
+  color: #884ea0;
+  font-weight: 500;
+  font-size: 1.1em;
+  letter-spacing: 0.02em;
+}
+kendo-grid .money-cell {
+  display: inline-block;
+  min-width: 80px;
+  text-align: right;
+  width: 100%;
+}
+
+#map-container {
+    position: relative;
+}
+
+
+kendo-drawer {
+    z-index: 11000; /* ensure it's above other content */
+}
+
+.modal-grid-container {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  min-height: 0;
+  overflow: hidden;
+}
+

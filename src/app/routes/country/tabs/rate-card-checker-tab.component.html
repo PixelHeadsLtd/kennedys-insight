@@ -1,0 +1,215 @@
+<header class="section-header">
+  <form
+    name="rate-card-mapper"
+    role="search"
+    class="flex-group flex-start flex-align-center"
+    aria-label="Rate Mapper filters"
+    (ngSubmit)="onSubmit($event)"
+    (reset)="onReset()"
+  >
+    <!-- Search by -->
+    <div>
+      <label>Search by</label>
+      <div class="select">
+        <select
+          id="searchMode"
+          name="searchMode"
+          [value]="searchMode"
+          (change)="onModeChange($event)"
+        >
+          <option value="matter">By Matter Number</option>
+          <option value="office-type">By Country & Office (Type Timekeeper)</option>
+          <option value="office-pick">By Country & Office (Pick Timekeeper)</option>
+        </select>
+        <span class="material-icons">keyboard_arrow_down</span>
+      </div>
+    </div>
+
+    <!-- MODE: By Matter Number -->
+    <div class="mode-block" [hidden]="searchMode !== 'matter'">
+      <label>Matter No</label>
+        <input
+          name="matterNo"
+          id="matterNo"
+          type="text"
+          inputmode="numeric"
+          placeholder="e.g. 0045123"
+        />
+    </div>
+
+    <!-- MODE: By Country & Office (Type Timekeeper) -->
+    <div class="flex-group flex-start" [hidden]="searchMode !== 'office-type'">
+      <div>
+        <label>Country</label>
+        <div class="select">
+          <select name="country" id="country-typed">
+            <option value="">All</option>
+            <option>United Kingdom</option>
+            <option>United States</option>
+            <option>Mexico</option>
+            <option>Chile</option>
+          </select>
+          <span class="material-icons">keyboard_arrow_down</span>
+        </div>
+      </div>
+
+      <div>
+        <label>Office</label>
+        <div class="select">
+          <select name="office" id="office-typed">
+            <option value="">All</option>
+            <option>Manchester</option>
+            <option>Chelmsford</option>
+            <option>London</option>
+          </select>
+          <span class="material-icons">keyboard_arrow_down</span>
+        </div>
+      </div>
+
+      <div>
+        <label>Time Keeper</label>
+        <div class="datalist">
+          <input
+            name="timekeeper"
+            id="timekeeper-typed"
+            list="timekeepers"
+            placeholder="Start typing…"
+            autocomplete="off"
+          />
+          <datalist id="timekeepers">
+            <option value="Joy Middleton"></option>
+            <option value="Sarah Jones"></option>
+            <option value="John Doe"></option>
+          </datalist>
+          <span class="material-icons">keyboard_arrow_down</span>
+        </div>
+      </div>
+
+      <div>
+        <label>Client Partner (optional)</label>
+        <div class="datalist">
+          <input
+            name="clientPartner"
+            id="clientPartner-typed"
+            list="partners"
+            placeholder="Start typing…"
+            autocomplete="off"
+          />
+          <datalist id="partners">
+            <option value="Sarah Jones"></option>
+            <option value="Chris Wilson"></option>
+            <option value="Jane Smith"></option>
+          </datalist>
+          <span class="material-icons">keyboard_arrow_down</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODE: By Country & Office (Pick Timekeeper) -->
+    <div class="flex-group flex-start" [hidden]="searchMode !== 'office-pick'">
+      <div>
+        <label>Country</label>
+        <div class="select">
+          <select name="country_alt" id="country-pick">
+            <option value="">All</option>
+            <option>United Kingdom</option>
+            <option>United States</option>
+            <option>Mexico</option>
+            <option>Chile</option>
+          </select>
+          <span class="material-icons">keyboard_arrow_down</span>
+        </div>
+      </div>
+      
+      <div>      
+        <label>Office</label>
+        <div class="select">
+          <select name="office_alt" id="office-pick">
+            <option value="">All</option>
+            <option>Manchester</option>
+            <option>Chelmsford</option>
+            <option>London</option>
+          </select>
+          <span class="material-icons">keyboard_arrow_down</span>
+        </div>
+      </div>
+
+      <div>
+        <label>Time Keeper</label>
+        <div class="select">
+          <select name="timekeeper_alt" id="timekeeper-pick">
+            <option value="">All</option>
+            <option>Joy Middleton</option>
+            <option>Sarah Jones</option>
+            <option>Chris Wilson</option>
+          </select>
+          <span class="material-icons">keyboard_arrow_down</span>
+        </div>
+      </div>
+      
+      <div>
+        <label>Client Partner (optional)</label>
+        <div class="datalist">
+          <input
+            name="clientPartner_alt"
+            id="clientPartner-pick"
+            list="partners"
+            placeholder="Start typing…"
+            autocomplete="off"
+          />
+          <span class="material-icons">keyboard_arrow_down</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-group flex-start">
+      <button type="submit" class="primary">Apply filters</button>
+      <button type="reset" class="clear">Clear</button>
+    </div>
+  </form>
+</header>
+
+<!-- ===== Filter Tabs Toolbar ===== -->
+<section class="chips flex-group flex-start flex-align-center">
+    <div class="toolbar-control" *ngIf="activeFilter">
+    <ng-container [ngSwitch]="activeFilterDef?.type">
+      <input
+        *ngSwitchCase="'text'"
+        class="ctrl"
+        type="text"
+        [placeholder]="'Filter ' + activeFilterDef?.label"
+        [value]="filterValues[activeFilter!] || ''"
+        (input)="onFilterInput($event)"
+      />
+      <div *ngSwitchCase="'select'" class="select">
+        <select
+          class="ctrl"
+          [value]="filterValues[activeFilter!] || ''"
+          (change)="onFilterSelectChange($event)"
+        >
+          <option value="">All</option>
+          <option *ngFor="let o of getOptionsFor(activeFilter!)" [value]="o">{{ o }}</option>
+        </select>
+        <span class="material-icons">keyboard_arrow_down</span>
+      </div>
+    </ng-container>
+  </div>
+  <button
+    type="button"
+    class="flex-group flex-star flex-align-center flex-nowrap"
+    *ngFor="let f of filterDefs"
+    [class.active]="activeFilter === f.key"
+    (click)="setActiveFilter(f.key)"
+  >
+    {{ f.label }}
+    <span *ngIf="filterValues[f.key]" class="material-icons">star</span>
+  </button>
+</section>
+
+<app-table
+  [rows]="tableRows"
+  [columns]="clientColumns"
+  [elementColor]="elementColor"
+  [maxHeight]="24"
+  [marginTop]="3">
+</app-table>

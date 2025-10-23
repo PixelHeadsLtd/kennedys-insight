@@ -1,0 +1,126 @@
+// black (kennedys black further down)
+$black: rgb(0, 0, 0);
+$black-tint-08: rgba(0, 0, 0, 0.8);
+
+// white
+$white: rgb(255, 255, 255);
+$white-tint-002: rgba(255, 255, 255, .02);
+$white-tint-004: rgba(255, 255, 255, .55); // light-mode overlay body
+$white-tint-006: rgba(255, 255, 255, .06);
+$white-tint-08: rgba(208, 208, 208, .7);
+$white-tint-06: rgba(255, 255, 255, .6);
+
+// blue
+$kennedys-blue-tint: rgba(0, 163, 224, .1);
+$kennedys-blue-tint-subtle: rgba(0, 163, 224, .7);
+$kennedys-blue-100: rgb(0, 163, 224);
+$kennedys-blue-75:  rgb(64, 186, 232);
+$kennedys-blue-50:  rgb(128, 209, 240);
+$kennedys-blue-25:  rgb(191, 232, 247);
+$kennedys-blue-10:  rgb(230, 246, 252);
+$kennedys-blue-opaque-10: rgba(0, 163, 224, .1);
+$kennedys-primary-hover: rgb(0, 130, 179);
+
+// green
+$kennedys-green-tint: rgba(0, 177, 64, .1);
+$kennedys-green-tint-subtle: rgba(0, 177, 64, .7);
+$kennedys-green-100: rgb(0, 177, 64);
+$kennedys-green-75:  rgb(64, 196, 112);
+$kennedys-green-50:  rgb(128, 216, 160);
+$kennedys-green-25:  rgb(191, 236, 207);
+$kennedys-green-10:  rgb(230, 247, 236);
+
+// yellow
+$kennedys-yellow-tint: rgba(255, 184, 28, .1);
+$kennedys-yellow-tint-subtle: rgba(255, 184, 28, .8);
+$kennedys-yellow-100: rgb(255, 184, 28);
+$kennedys-yellow-75:  rgb(255, 202, 85);
+$kennedys-yellow-50:  rgb(255, 220, 142);
+$kennedys-yellow-25:  rgb(255, 237, 198);
+$kennedys-yellow-10:  rgb(255, 248, 232);
+
+// orange
+$kennedys-orange-tint: rgba(255, 106, 0, .1);
+$kennedys-orange-tint-subtle: rgba(255, 106, 0, .7);
+$kennedys-orange-100: rgb(255, 106, 0);
+$kennedys-orange-75:  rgb(255, 143, 64);
+$kennedys-orange-50:  rgb(255, 180, 128);
+$kennedys-orange-25:  rgb(255, 218, 191);
+$kennedys-orange-10:  rgb(255, 240, 230);
+
+// red
+$kennedys-red-tint: rgba(213, 0, 50, .1);
+$kennedys-red-tint-subtle: rgba(213, 0, 50, .7);
+$kennedys-red-100:  rgb(213, 0, 50);
+$kennedys-red-75:   rgb(224, 64, 101);
+$kennedys-red-50:   rgb(234, 128, 152);
+$kennedys-red-25:   rgb(244, 191, 204);
+$kennedys-red-10:   rgb(251, 230, 234);
+
+// Kennedys black
+$kennedys-black-100-tint-light: rgb(10, 22, 32);
+$kennedys-black-100-tint-dark: rgb(7, 15, 22);
+
+$kennedys-black-tint-02: rgba(9, 11, 15, .7); // light-mode overlay header
+$kennedys-black-tint-05: rgba(16, 24, 32, 0.5);
+
+$kennedys-black-100: rgb(16, 24, 32);
+$kennedys-black-75:  rgb(76, 82, 88);
+$kennedys-black-50:  rgb(136, 140, 144);
+$kennedys-black-25:  rgb(195, 197, 199);
+$kennedys-black-10:  rgb(231, 232, 233);
+ 
+// SIZE
+$size-tiny: .4vw;
+$size-extra-small: .47vw;
+$size-small: .55vw;
+$size-medium: .6vw;
+$size-large: .8vw;
+$size-extra-large: .95vw;
+$size-huge: 1.25vw;
+$size-extra-huge: 2vw;
+
+// FONTS
+// Kennedys font-family variables
+$light: 'kennedyslight';
+$lightitalic: 'kennedyslight_italic';
+$regular: 'kennedysregular';
+$medium: 'kennedysmedium';
+$mediumitalic: 'kennedysmedium_italic';
+$semibold: 'kennedyssemibold';
+$semibolditalic: 'kennedyssemibold_italic';
+$bold: 'kennedysbold';
+$bolditalic: 'kennedysbold_italic';
+$xbold: 'kennedysxbold';
+$xbolditalic: 'kennedysxbold_italic';
+$italic: 'kennedysitalic';
+
+// Merriweather
+$merriweather: 'Merriweather';
+
+// Trebuchet font-family variables
+$truregular: 'trebuchet_msregular';
+$trubold: 'trebuchet_msbold';
+$trubolditalic: 'trebuchet_msbold_italic';
+$truitalic: 'trebuchet_msitalic';
+
+
+// Font Awesome variables
+$fa-solid: 'Font Awesome 6 Free';
+$fa-regular: 'Font Awesome 6 Free'; // same family, different weight
+$fa-brands: 'Font Awesome 6 Brands';
+
+// Material Icons
+$material-icons: 'material-icons';
+$material-icons-outlined: 'material-icons-outlined';
+
+// Breakpoints
+$breakpoints: (
+  sm: 1024,   // small laptop
+  md: 1280,   // standard laptop
+  lg: 1440,   // common desktop
+  fhd: 1920,  // full HD
+  qhd: 2560,  // 1440p
+  uhd: 3840,  // 4K
+  uw:  5120   // ultrawide / 5K
+);

@@ -1,0 +1,11 @@
+<nav class="tabs tabs-content">
+    <a
+        *ngFor="let tab of tabs"
+        [routerLink]="[tab.path]"
+        routerLinkActive="active"
+        class="flex-group flex-align-center flex-nowrap flex-start"
+    >
+        <span class="material-icons">{{ tab.icon }}</span>
+        <span>{{ tab.label }}</span>
+    </a>
+</nav>

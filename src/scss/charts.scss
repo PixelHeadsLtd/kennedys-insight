@@ -1,0 +1,266 @@
+@use "./variables" as *;
+
+.charts {
+    min-height: 15.5vw;
+    .chart {
+        margin: 0 4vw;
+
+        &:first-child {
+            margin-left: 0;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &.bar-chart {
+            h4 {
+                margin-bottom: .2vw;;
+            }
+            width: 11.5vw;
+
+            text {
+                fill: $kennedys-black-10;
+            }
+
+            .k-chart {
+                height: 7vw;
+
+                g.k-chart-point {
+                    path,
+                    rect {
+                        transform-box: fill-box;
+                        transform-origin: 50% 50%;
+                    }
+                }
+            }
+        }
+
+        &.donut-chart {
+            position: relative;
+            margin-left: 0;
+            margin-right: 2vw;
+
+            .k-chart-surface {
+                width: 14vw;
+                height: 14vw;
+            }
+
+            .overview-donut {
+                height: fit-content;
+
+                h5 {
+                    font-size: .6vw;
+                }
+
+                h4 {
+                    &.shrink-font {
+                        font-size: $size-huge;
+                        line-height: 1vw;
+                        margin: 1.4vw 0 0.1vw 0;
+                    }
+                }
+            }
+
+            ul {
+                margin-left: -0.7vw;
+                padding: 0;
+                color: $kennedys-black-10;
+                font-size: $size-small;
+                font-family: $medium;
+                line-height: 0.85vw;
+                list-style: none;
+
+                li {
+                    position: relative;
+                    color: $kennedys-black-10;
+                    span {
+                        &:not(.value) {
+                            color: $kennedys-black-10;
+                        }
+                        &.value {
+                            padding-left: 0.2vw;
+                            font-size: $size-small;
+                        }
+                    }
+                    &.orange-100:before {
+                        background-color: $kennedys-orange-100;
+                    }
+                    &.green-100:before {
+                        background-color: $kennedys-green-100;
+                    }
+                    &.yellow-100:before {
+                        background-color: $kennedys-yellow-100;
+                    }
+                    &.red-100:before {
+                        background-color: $kennedys-red-100;
+                    }
+                    &.blue-100:before {
+                        background-color: $kennedys-blue-100;
+                    }
+                    &:before {
+                        position: absolute;
+                        top: 0.17vw;
+                        left: -0.7vw;
+                        display: block;
+                        border-radius: 0.05vw;
+                        width: 0.4vw;
+                        height: 0.4vw;
+                        content: "";
+                    }
+                }
+            }
+        }
+
+        .k-chart-surface:focus-visible {
+            outline: unset !important;
+        }
+        .k-chart {
+            border: none !important;
+
+            .k-chart-legend-item {
+                path,
+                rect {
+                    transform-box: fill-box;
+                    transform-origin: 50% 50%;
+                    transform: scale(0.9);
+                }
+            }
+
+            text {
+                font-size: $size-extra-small !important;
+            }
+
+            * {
+                font-family: $regular !important;
+            }
+
+            &[aria-activedescendant],
+            &:focus-visible {
+                outline: unset !important;
+            }
+
+            svg {
+                > g > path:first-of-type {
+                    fill: transparent !important;
+                }
+
+                .k-chart-legend-item text {
+                    fill: $kennedys-black-10 !important;
+                    font-size: $size-extra-small !important;
+                }
+
+                g:has(> g.k-chart-legend-item) {
+                    transform: translateX(-1vw) !important;
+                }
+            }
+        }
+
+        .chart-details {
+            color: $kennedys-black-10 !important;
+            border: 1px solid $kennedys-black-50;
+            text-align: center;
+            border-radius: 50%;
+            max-width: 4.5vw;
+            min-width: 4.5vw;
+            max-height: 4.5vw;
+            min-height: 4.5vw;
+            h4 {
+                font-size: $size-extra-huge;
+                text-align: center;
+                font-family: $medium !important;
+                padding: 0 0.1vw 0 0;
+                margin: 1vw 0 0.15vw 0;
+                line-height: 1.5vw;
+                letter-spacing: unset;
+            }
+        }
+    }
+}
+
+.red-100 {
+    .waffle {
+        &__cell {
+            &.filled {
+                background-color: $kennedys-red-100;
+            }
+        }
+    }
+}
+.blue-100 {
+    .waffle {
+        &__cell {
+            &.filled {
+                background-color: $kennedys-blue-100;
+            }
+        }
+    }
+}
+.green-100 {
+    .waffle {
+        &__cell {
+            &.filled {
+                background-color: $kennedys-green-100;
+            }
+        }
+    }
+}
+.orange-100 {
+    .waffle {
+        &__cell {
+            &.filled {
+                background-color: $kennedys-orange-100;
+            }
+        }
+    }
+}
+.yellow-100 {
+    .waffle {
+        &__cell {
+            &.filled {
+                background-color: $kennedys-yellow-100;
+            }
+        }
+    }
+}
+
+.waffle-chart {
+    h4 {
+        margin-bottom: .6vw;;
+    }
+    .waffle {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        column-gap: 0;
+        margin: 0;
+
+        &__grid {
+            --cols: 10;
+            display: grid;
+            grid-template-columns: repeat(var(--cols), 0.8vw);
+            grid-auto-rows: 0.8vw;
+            gap: 0;
+        }
+
+        &__cell {
+            width: 0.5vw;
+            height: 0.5vw;
+            border-radius: 0.1vw;
+            background: transparent;
+            border: 1px solid $kennedys-black-50;
+            &.filled {
+                border-color: transparent;
+            }
+        }
+
+        &__label {
+            margin-left: 0.5vw;
+            white-space: nowrap;
+            font-family: $regular;
+            font-size: $size-small !important;
+            color: $kennedys-black-10;
+        }
+    }
+}
+
+

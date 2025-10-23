@@ -1,0 +1,83 @@
+<ul>
+  <li *ngFor="let item of navDataItems" [attr.data-region]="item.title">
+    <!-- Top-level region toggle -->
+    <div
+      (click)="toggle(item, $event)"
+      class="nav-toggle level-0 flex-group space-between flex-align-center flex-nowrap"
+    >
+      <span class="flex-group flex-start flex-align-center flex-nowrap">
+        <span
+          class="marker-large {{ item.nestedItems[0]?.markerBgColor }}"
+          [ngClass]="{ 'marker-hollow': item.nestedItems[0]?.markerIsHollow }"
+        ></span>
+        <span class="level-0-text ellipsis">{{ item.title }}</span>
+      </span>
+      <span class="material-icons {{ item.nestedItems[0]?.markerBgColor }}">
+        keyboard_arrow_up
+      </span>
+    </div>
+
+    <!-- Country/city container -->
+    <ul class="collapsible-level-0">
+      <li
+        class="{{ child.markerBgColor }}"
+        *ngFor="let child of item.nestedItems"
+        [attr.data-country]="child.title"
+      >
+        <!-- Toggle for countries with nested cities -->
+        <div
+          *ngIf="child.nestedItems.length; else countryLink"
+          (click)="toggle(child, $event)"
+          class="nav-toggle level-1 flex-group space-between flex-align-center"
+        >
+          <span class="flex-group flex-start flex-align-center flex-nowrap">
+            <span
+              class="marker-large {{ child.markerBgColor }}"
+              [ngClass]="{ 'marker-hollow': child.markerIsHollow }"
+            ></span>
+            <span>{{ child.title }}</span>
+          </span>
+
+          <span class="material-icons {{ child.markerBgColor }}">
+            keyboard_arrow_up
+          </span>
+
+        </div>
+
+        <!-- If no cities (just a country) -->
+        <ng-template #countryLink>
+          <a
+            class="nav-toggle level-1 flex-group space-between flex-align-center"
+            [routerLink]="child.routerLink"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: false }"
+            (click)="onNavClick(child)"
+          >
+            <span class="flex-group flex-start flex-align-center flex-nowrap">
+              <span
+                class="marker-large {{ child.markerBgColor }}"
+                [ngClass]="{ 'marker-hollow': child.markerIsHollow }"
+              ></span>
+              <span>{{ child.title }}</span>
+            </span>
+          </a>
+        </ng-template>
+
+        <!-- City links (nested under country) -->
+        <ul class="collapsible-level-1">
+          <li *ngFor="let grandChild of child.nestedItems">
+            <a
+              [routerLink]="grandChild.routerLink"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: false }"
+              (click)="onNavClick(grandChild, child)"
+            >
+              {{ grandChild.title }}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+

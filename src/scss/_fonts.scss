@@ -1,0 +1,181 @@
+// Kennedys
+@font-face {
+    font-family: 'kennedyslight';
+    src: url('../assets/fonts/kennedys/kennedys_lt-webfont.woff2') format('woff2'),
+         url('../assets/fonts/kennedys/kennedys_lt-webfont.woff') format('woff'),
+         url('../assets/fonts/kennedys/kennedys_lt-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kennedyslight_italic';
+    src: url('../assets/fonts/kennedys/kennedys_ltit-webfont.woff2') format('woff2'),
+         url('../assets/fonts/kennedys/kennedys_ltit-webfont.woff') format('woff'),
+         url('../assets/fonts/kennedys/kennedys_ltit-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kennedysregular';
+    src: url('../assets/fonts/kennedys/kennedys_rg-webfont.woff2') format('woff2'),
+         url('../assets/fonts/kennedys/kennedys_rg-webfont.woff') format('woff'),
+         url('../assets/fonts/kennedys/kennedys_rg-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kennedysmedium';
+    src: url('../assets/fonts/kennedys/kennedys_md-webfont.woff2') format('woff2'),
+         url('../assets/fonts/kennedys/kennedys_md-webfont.woff') format('woff'),
+         url('../assets/fonts/kennedys/kennedys_md-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kennedysmedium_italic';
+    src: url('../assets/fonts/kennedys/kennedys_mdit-webfont.woff2') format('woff2'),
+         url('../assets/fonts/kennedys/kennedys_mdit-webfont.woff') format('woff'),
+         url('../assets/fonts/kennedys/kennedys_mdit-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kennedyssemibold';
+    src: url('../assets/fonts/kennedys/kennedys_sbd-webfont.woff2') format('woff2'),
+         url('../assets/fonts/kennedys/kennedys_sbd-webfont.woff') format('woff'),
+         url('../assets/fonts/kennedys/kennedys_sbd-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kennedyssemibold_italic';
+    src: url('../assets/fonts/kennedys/kennedys_sbdit-webfont.woff2') format('woff2'),
+         url('../assets/fonts/kennedys/kennedys_sbdit-webfont.woff') format('woff'),
+         url('../assets/fonts/kennedys/kennedys_sbdit-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kennedysbold';
+    src: url('../assets/fonts/kennedys/kennedys-webfont.woff2') format('woff2'),
+         url('../assets/fonts/kennedys/kennedys-webfont.woff') format('woff'),
+         url('../assets/fonts/kennedys/kennedys-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kennedysbold_italic';
+    src: url('../assets/fonts/kennedys/kennedys_bdit-webfont.woff2') format('woff2'),
+         url('../assets/fonts/kennedys/kennedys_bdit-webfont.woff') format('woff'),
+         url('../assets/fonts/kennedys/kennedys_bdit-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kennedysxbold';
+    src: url('../assets/fonts/kennedys/kennedys_xbd-webfont.woff2') format('woff2'),
+         url('../assets/fonts/kennedys/kennedys_xbd-webfont.woff') format('woff'),
+         url('../assets/fonts/kennedys/kennedys_xbd-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kennedysxbold_italic';
+    src: url('../assets/fonts/kennedys/kennedys_xbdit-webfont.woff2') format('woff2'),
+         url('../assets/fonts/kennedys/kennedys_xbdit-webfont.woff') format('woff'),
+         url('../assets/fonts/kennedys/kennedys_xbdit-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kennedysitalic';
+    src: url('../assets/fonts/kennedys/kennedys_it-webfont.woff2') format('woff2'),
+         url('../assets/fonts/kennedys/kennedys_it-webfont.woff') format('woff'),
+         url('../assets/fonts/kennedys/kennedys_it-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// Merriweather
+@font-face {
+    font-family: 'merriweather';
+    src: url('../assets/fonts/merriweather/Merriweather24pt-Regular.woff2') format('woff2'),
+         url('../assets/fonts/merriweather/Merriweather24pt-Regular.woff') format('woff'),
+         url('../assets/fonts/merriweather/Merriweather24pt-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Font Awesome Webfonts */
+@font-face {
+    font-family: 'Font Awesome 6 Free';
+    font-style: normal;
+    font-weight: 900;
+    font-display: block;
+    src: url('../assets/fonts/font-awesome/webfonts/fa-solid-900.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Font Awesome 6 Free';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url('../assets/fonts/font-awesome/webfonts/fa-regular-400.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Font Awesome 6 Brands';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url('/assets/fonts/font-awesome/webfonts/fa-brands-400.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'material-icons';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../assets/fonts/material-design-icons/MaterialIcons-Regular.ttf') format("truetype");
+  }
+   
+  @font-face {
+    font-family: 'material-icons-outlined';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../assets/fonts/material-design-icons/MaterialIconsOutlined-Regular.ttf');
+  }
+
+.font-awesome {
+    font-family: 'Font Awesome 6 Free';
+    font-size: 1vw;
+    outline: none;
+}
+
+.material-icons {
+    font-family: 'material-icons';
+    text-transform: initial;
+    display: inline-block;
+    font-size: 1vw;
+    margin: 0 .2vw 0 0;
+    outline: none;
+}
+
+.material-icons-outlined {
+    font-family: 'material-icons-outlined';
+    text-transform: initial;
+    display: inline-block;
+    font-size: 1vw;
+    margin: 0 .2vw 0 0;
+    outline: none;
+}

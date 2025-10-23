@@ -1,0 +1,37 @@
+<section 
+  class="table-wrapper table-overview"
+  [ngStyle]="{
+    'max-height' : maxHeight + 'vw',
+    'margin-top' : marginTop + 'vw'
+  }"
+>
+  <table>
+    <thead>
+      <tr>
+        <!-- Repeat your header block for each column -->
+        <th *ngFor="let col of columns" (click)="col.sortable === false ? null : sortBy(col.key)">
+          <span class="thead-wrapper">
+            <span class="thead-value">{{ col.header || col.key }}</span>
+            <span class="material-icons {{elementColor}}" *ngIf="col.sortable !== false">
+              {{ sortIcon(col.key) }}
+            </span>
+          </span>
+          <span class="thead-border"><!-- do not delete --></span>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="let row of tableRows; let idx = index"
+        [class.open]="isOpen(idx)"
+        (click)="toggleOpen(idx)"
+      >
+        <!-- One cell per column -->
+        <td *ngFor="let col of columns">
+          {{ valueOf(row, col, idx) }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

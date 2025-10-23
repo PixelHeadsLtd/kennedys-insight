@@ -1,0 +1,33 @@
+<!-- <kendo-dialog
+  *ngIf="visible"
+  (close)="close.emit()"
+  title="Revenue Breakdown by Region"
+  class="matters-modal"
+  width="calc(100vw - 200px)"
+  height="calc(100vh - 200px)"
+>
+  <kendo-tabstrip (tabSelect)="onTabSelect($event.index)">
+    <kendo-tabstrip-tab title="Revenue" [selected]="revenueTabIndex === 0">
+      <ng-template kendoTabContent>
+        <div class="modal-grid-container" style="position:relative;">
+          <div *ngIf="revenueLoading" class="custom-spinner-overlay">
+          </div>
+
+          <kendo-grid
+            [data]="revenueGridData"
+            [height]="gridHeight"
+            [sortable]="true"
+            [sort]="revenueSort"
+            (sortChange)="onSortChange($event)"
+          >
+          </kendo-grid>
+        </div>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab title="Chart" [selected]="revenueTabIndex === 1">
+      <ng-template kendoTabContent>
+      </ng-template>
+    </kendo-tabstrip-tab>
+  </kendo-tabstrip>
+</kendo-dialog> -->

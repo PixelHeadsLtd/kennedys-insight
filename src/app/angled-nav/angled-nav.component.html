@@ -1,0 +1,112 @@
+    <nav class="angled-nav">
+        <section class="section-search">
+            <div class="theme-selector flex-group flex-start flex-align-center flex-nowrap">
+                <img class="kennedys-logo" src="assets/images/logos/kennedys-logo-wht.svg" />
+                <label class="insight">Insight</label>
+                <div class="radios flex-group flex-start flex-align-center">
+                    <label class="flex-group flex-start flex-align-center flex-nowrap">
+                        <input type="radio" name="theme" value="dark-mode"
+                            [checked]="theme === 'dark-mode'"
+                            (change)="setTheme('dark-mode')">
+                        Dark
+                    </label>
+                    <label class="flex-group flex-start flex-align-center flex-nowrap">
+                        <input type="radio" name="theme" value="light-mode"
+                            [checked]="theme === 'light-mode'"
+                            (change)="setTheme('light-mode')">
+                        Light
+                    </label>
+
+                    <!-- <label class="flex-group flex-start flex-align-center flex-nowrap">
+                        <input type="radio" name="theme" value="colour-mode"
+                            [checked]="theme === 'colour-mode'"
+                            (change)="setTheme('colour-mode')">
+                        Colour
+                    </label> -->
+                </div>
+            </div>
+            
+            <h4>Quick filter</h4>
+            <div class="search-wrapper">
+                <div class="search-field">
+                    <input
+                        id="search"
+                        type="text"
+                        placeholder="Start typing..."
+                        aria-placeholder="Start typing..."
+                        [(ngModel)]="searchTerm"
+                        (input)="onSearchChange()"
+                    />
+
+                    <button (click)="clearSearch()">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <div class="dash"></div>
+        <section class="section-matters">
+            <h4>Matters</h4>
+            <div class="flex-group flex-start">
+                <div class="flex-group flex-column">
+                    <label class="flex-group flex-start flex-align-center"><input type="radio" name="range" value="12m" [(ngModel)]="selectedRange" (change)="onRangeSelect('12m')"> Last 12 mths</label>
+                    <label class="flex-group flex-start flex-align-center"><input type="radio" name="range" value="3y" [(ngModel)]="selectedRange" (change)="onRangeSelect('3y')"> Last 3 yrs</label>
+                    <label class="flex-group flex-start flex-align-center"><input type="radio" name="range" value="all" [(ngModel)]="selectedRange" (change)="onRangeSelect('all')"> All time</label>
+                    <label class="flex-group flex-start flex-align-center"><input type="radio" name="range" value="custom" [(ngModel)]="selectedRange" (change)="onRangeSelect('custom')"> Custom date range</label>
+                </div>
+
+                <div class="flex-group flex-column">
+                    <label class="flex-group flex-start flex-align-center"><input type="checkbox" [checked]="selectedStatuses.includes('Open')" (change)="toggleStatus('Open', $event.target.checked)"> Open</label>
+                    <label class="flex-group flex-start flex-align-center"><input type="checkbox" [checked]="selectedStatuses.includes('Closed')" (change)="toggleStatus('Closed', $event.target.checked)"> Closed</label>
+                    <label class="flex-group flex-start flex-align-center"><input type="checkbox" [checked]="selectedStatuses.includes('In progress')" (change)="toggleStatus('In progress', $event.target.checked)"> In progress</label>
+                </div>
+            </div>
+             <div class="flex-group flex-start margin-top-1" *ngIf="selectedRange === 'custom'">
+                <div class="flex-group flex-column">
+                    <label for="from">From</label>
+                    <kendo-datepicker [(ngModel)]="fromDate" (valueChange)="emitMattersChange()"></kendo-datepicker>
+                </div>
+                <div class="flex-group flex-column">
+                    <label for="to">To</label>
+                    <kendo-datepicker [(ngModel)]="toDate" (valueChange)="emitMattersChange()"></kendo-datepicker>
+                </div>
+            </div>
+        </section>
+
+        <div class="dash"></div>
+
+        <section class="section-offices">
+            <h4>Offices & people</h4>
+            <div class="flex-group flex-column">
+                <label class="flex-group flex-start flex-align-center">
+                    <input type="radio" name="officeRange" value="offices" [(ngModel)]="selectedOfficeType" (change)="onOfficeFilterChange('offices')"> Offices
+                </label>
+                <label class="flex-group flex-start flex-align-center">
+                    <input type="radio" name="officeRange" value="associated" [(ngModel)]="selectedOfficeType" (change)="onOfficeFilterChange('associated')"> Associated Offices
+                </label>
+                <label class="flex-group flex-start flex-align-center">
+                    <input type="radio" name="officeRange" value="staff" [(ngModel)]="selectedOfficeType" (change)="onOfficeFilterChange('staff')"> Staff
+                </label>
+            </div>
+            <button 
+                *ngIf="selectedRange || selectedStatuses.length || selectedOfficeType || searchTerm" 
+                class="primary margin-top-0-5" 
+                (click)="clearAllFilters()">
+                Clear all filters
+            </button>
+        </section>
+        <div class="dash"></div>
+        <section class="section-key">
+            <h4>Key</h4>
+            <ul class="key">
+                <li><label>Asia Pacific</label></li>
+                <li><label>Europe, Middle East & Africa</label></li>
+                <li><label>Latin America & the Caribbean</label></li>
+                <li><label>North America</label></li>
+                <li><label>United Kingdom</label></li>
+                <li class="margin-top-2"><label>Offices</label></li>
+                <li><label>Associated offices & cooperations</label></li>
+                <li><label>Currently not serviced</label></li>
+            </ul>
+        </section>
+    </nav>

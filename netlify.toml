@@ -1,0 +1,11 @@
+[build]
+  command = "ng build --configuration production"
+  publish = "dist/kennedys-insight"
+
+[[plugins]]
+  package = "@netlify/angular-runtime"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

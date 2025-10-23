@@ -1,0 +1,108 @@
+@use "./variables" as *;
+
+html {font-size: clamp(15px, 0.9vw, 18px)}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $black;
+    font-family: $regular;
+    font-size: max(.625vw, .525vw);
+    letter-spacing: 0.03vw;
+    overflow: hidden;
+
+    .kennedys-logo {
+        width: 9vw;
+        margin: .6vw 0 1.2vw 0;
+    }
+}
+
+ul.key {
+    list-style: none;
+    padding-left: .1vw;
+    margin-top: 0;
+
+    li {
+        position: relative;
+        margin: 0 0 .3vw 0;
+        padding-left: max(1rem, .9vw);
+        color: $kennedys-black-10;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: max(0, -.06vw);
+            left: 0;
+            width: .5vw;
+            height: .5vw;
+            border-radius: 50%;
+            background-color: currentColor;
+        }
+
+        &:nth-child(1) {
+            color: $kennedys-orange-100;
+        }
+        &:nth-child(2) {
+            color: $kennedys-green-100;
+        }
+        &:nth-child(3) {
+            color: $kennedys-yellow-100;
+        }
+        &:nth-child(4) {
+            color: $kennedys-red-100;
+        }
+        &:nth-child(5) {
+            color: $kennedys-blue-100;
+        }
+        &:nth-child(6) {
+            color: $kennedys-black-10;
+        }
+        &:nth-child(7) {
+            color: $kennedys-black-10;
+
+            &::before {
+                background-color: transparent;
+                border: .1rem solid currentColor;
+                width: calc(.5vw - .1vw);
+                height: calc(.5vw - .1vw);
+            }
+        }
+        &:nth-child(8) {
+            color: $kennedys-black-10;
+
+            
+            &::before {
+                background-color: transparent;
+                border: .1rem dotted currentColor;
+                width: calc(.5vw - .1vw);
+                height: calc(.5vw - .1vw);
+            }
+        }
+    }
+}
+
+// SCROLL BARS
+::-webkit-scrollbar {
+    width: 12px!important;
+    background: transparent!important;
+}
+ 
+::-webkit-scrollbar-corner {
+    background: transparent!important;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border: 5px solid transparent!important;
+    background-clip: padding-box;
+    background-color: $kennedys-black-75;
+}
+ 
+::-webkit-scrollbar-button {
+    display: none;
+}
+ 

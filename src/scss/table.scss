@@ -1,0 +1,93 @@
+@use './variables' as *;
+
+.orange-100 {.thead-border {border-top-color: $kennedys-orange-100} tr:hover td {background-color: $kennedys-orange-tint} .primary {background-color: $kennedys-orange-100!important; &:hover {background-color: $kennedys-orange-tint-subtle!important;}}}
+.green-100 {.thead-border {border-top-color: $kennedys-green-100} tr:hover td {background-color: $kennedys-green-tint} .primary {background-color: $kennedys-green-100!important; &:hover {background-color: $kennedys-green-tint-subtle!important;}}}
+.yellow-100 {.thead-border {border-top-color: $kennedys-yellow-100} tr:hover td {background-color: $kennedys-yellow-tint} .primary {background-color: $kennedys-yellow-100!important; &:hover {background-color: $kennedys-yellow-tint-subtle!important;}}}
+.red-100 {.thead-border {border-top-color: $kennedys-red-100} tr:hover td {background-color: $kennedys-red-tint} .primary {background-color: $kennedys-red-100!important; &:hover {background-color: $kennedys-red-tint-subtle!important;}}}
+.blue-100 {.thead-border {border-top-color: $kennedys-blue-100} tr:hover td {background-color: $kennedys-blue-tint} .primary {background-color: $kennedys-blue-100!important; &:hover {background-color: $kennedys-blue-tint-subtle!important;}}}
+
+.table-wrapper {
+    overflow: auto;
+    width: 100%;
+
+    table {
+        width: 100%;
+        thead {
+            th {
+                padding: 0;
+                font-family: $bold;
+                letter-spacing: .05rem;
+                font-size: $size-medium;
+                cursor: pointer;
+
+                .thead-border {
+                    display: none;
+                    position: absolute;
+                    margin-top: -2px;
+                    color: inherit;
+                    width:calc(100% - 3vw);
+                    z-index: 0;
+                    border-top-style: dashed;
+                    border-top-width: .075rem;
+                }
+
+                &:first-child {
+                    .thead-border {
+                        display: block;
+                    }
+                    .thead-wrapper {
+                        padding-left: 0;
+                    }
+                }
+
+                &:last-child {
+                    padding-right: .5vw
+                }
+
+                .thead-wrapper {
+                    display: block;
+                    position: absolute;
+                    z-index: 1;
+                    padding: .4vw 1vw .7vw 1vw;
+                    margin-top: -1.5vw;
+                    height: .4vw;
+
+                    .thead-value {
+                        color: $kennedys-black-10;
+                    }
+
+                    .material-icons {
+                        position: absolute;
+                        margin: -.03vw 0 0 .2vw;
+                        color: inherit;
+                        font-size: $size-medium;
+                    }
+                }
+            }
+        }
+
+        tbody {
+            td {
+                border-bottom: 1px dotted $kennedys-black-75;
+                font-size: $size-small;
+                font-family: $medium;
+                color: $kennedys-black-10;
+                padding: .3vw 1vw;
+                text-align: left;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                max-width: 5vw;
+
+                &:first-child {
+                    padding-left: 0;
+                }
+
+                &:last-child {
+                    padding-right: .5vw;
+                }
+            }
+        }
+
+    }
+}

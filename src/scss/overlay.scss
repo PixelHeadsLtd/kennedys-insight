@@ -1,0 +1,112 @@
+@use "./variables" as *;
+
+
+app-overlay {
+    position: fixed;
+    z-index: 999;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;   
+    width: 100%;
+    height: 100%;
+    background-color: $black-tint-08;
+    color: $kennedys-black-10;
+    box-sizing: border-box;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 240ms ease, transform 240ms ease;
+
+    &.is-open {
+        pointer-events: auto;
+        opacity: 1;
+        transform: none;
+    }
+
+    .overlay-container {
+        width: auto;
+        height: auto;
+
+        .overlay-nav,
+        .overlay-outer {
+            position: relative;
+        }
+
+        .overlay-nav {
+            max-width: 12.62%;
+            margin-right: 1.75rem;
+        }
+
+        .overlay-outer {
+            width: 80%;
+            aspect-ratio: 16/8.27;
+
+            .overlay-bg-image {
+                position: absolute;
+                pointer-events: none;
+                width: 100%;
+                height: 100%;
+
+                .overlay-left-nav,
+                .overlay-left-nav-top,
+                .overlay-body,
+                .overlay-header {
+                    stroke: $kennedys-black-50;
+                    stroke-dasharray: 10 6;
+                    stroke-miterlimit: 10;
+                    stroke-width: 2px;
+                }
+
+                .overlay-left-nav {fill: $black-tint-08}
+                .overlay-left-nav-top {fill: $kennedys-black-100}
+                .overlay-body {fill: $kennedys-black-tint-02}
+                .overlay-header {fill: $kennedys-black-100-tint-dark}
+            }
+
+            header {
+                strong {
+                    margin-bottom: 0;
+                    font-size: $size-small;
+                    &.red-100 {
+                        color: $kennedys-red-75!important
+                    }
+                }
+
+            }
+
+            .overlay-inner {
+                position: relative;
+                z-index: 1;
+                padding: 2%;
+                margin: 0 0 0 15.25%;
+                height: 100%;
+
+                header:not(.section-header) {
+                    position: relative;
+                    height: 16%;
+                    padding-top: 2%;
+                }
+
+                .country-flag {
+                    background-color: $kennedys-black-10;
+                    width: 2.1vw;
+                    height: 2.1vw;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    margin-right: 1rem;
+                    img {
+                        height: 100%;
+                        position: static;
+                    }
+                }
+
+                h3 {
+                    color: $kennedys-black-10;
+                    text-transform: capitalize;
+                    margin-bottom: .1vw;
+                }
+            }
+        }
+    }
+}

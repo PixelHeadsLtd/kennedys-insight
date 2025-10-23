@@ -1,0 +1,32 @@
+<section 
+    #container 
+    [class.is-open]="isOpen"
+    (transitionend)="onOverlayTransitionEnd($event)"
+    class="overlay flex-group flex-center flex-nowrap"
+>
+    <section class="overlay-container flex-group flex-center flex-nowrap">
+        <div class="overlay-outer">
+             <app-overlay-background></app-overlay-background>
+             <nav class="nav-container">
+                <app-navigation (regionSelected)="onRegionSelected($event)"></app-navigation>
+             </nav>
+            <div *ngIf="regionData" class="overlay-inner">
+                <router-outlet></router-outlet>
+            </div>
+            <div class="search-wrapper flex-group flex-end flex-nowrap flex-align-center">
+                <div class="search-field">
+                    <input type="text" class="search-input" name="search" placeholder="Filter by Client" aria-placeholder="Filter by Client" />
+                    <button>
+                        <span class="material-icons">search</span>
+                    </button>
+                     <app-search-background></app-search-background>
+                </div>
+
+                <button class="close-btn" aria-label="Close overlay" (click)="onCloseClick()">
+                    <app-close-btn></app-close-btn>
+                </button>
+               
+            </div>
+        </div>
+    </section>
+</section>

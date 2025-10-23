@@ -1,0 +1,75 @@
+@use "./variables" as *;
+
+.red-100 .tabs {
+    .active {background-color: $kennedys-red-100}
+    a:hover:not(.active) .material-icons {color: $kennedys-red-100;}
+}
+.blue-100 .tabs {
+    .active {background-color: $kennedys-blue-100}
+    a:hover:not(.active) .material-icons {color: $kennedys-blue-100;}
+}
+.green-100 .tabs {
+    .active {background-color: $kennedys-green-100}
+    a:hover:not(.active) .material-icons {color: $kennedys-green-100;}
+}
+.orange-100 .tabs {
+    .active {
+        background-color: $kennedys-orange-100;
+        color: $kennedys-black-100;
+        .material-icons {color: $kennedys-black-100;}
+    }
+    a:hover:not(.active) .material-icons {color: $kennedys-orange-100;}
+}
+.yellow-100 .tabs {
+    .active {
+        background-color: $kennedys-yellow-100; 
+        color: $kennedys-black-100;
+        .material-icons {color: $kennedys-black-100;}
+    }
+    a:hover:not(.active) .material-icons {color: $kennedys-yellow-100;}
+}
+
+nav.tabs {
+    position: absolute;
+    bottom: 7%;
+    white-space: nowrap;
+
+    a {
+        display: inline-flex;
+        padding: .25vw .8vw .25vw .6vw;
+        margin: 0 .6vw 0 0;
+        color: $kennedys-black-10;
+        text-decoration: none;
+        background-color: $black;
+        border: 1px dashed $kennedys-black-50;
+        border-radius: 5rem;
+        font-family: $medium;
+        font-size: max(.75rem, $size-medium) !important;
+
+        &:hover {
+            color: $kennedys-black-10;
+            .material-icons {
+                color: $kennedys-black-10;
+            }
+        }
+
+        &.active {
+            background-color: $kennedys-black-10;
+            color: $kennedys-black-10;
+            cursor: default;
+            .material-icons {
+                color: $kennedys-black-10;
+            }
+        }
+
+        .material-icons {
+            color: $kennedys-black-10;
+            font-size: large;
+            height: 2%;
+        }
+    }
+}
+
+.tabbed-content {
+    margin-top: 1.25vw;
+}

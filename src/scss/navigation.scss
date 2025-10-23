@@ -1,0 +1,161 @@
+@use "./variables" as *;
+
+.nav-container {
+    position: absolute;
+    width: 11.25vw;
+    top: 3.25vw;
+    left: .09vw;
+    bottom: 2.5vw;
+    overflow: auto;
+
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+
+        .ellipsis {max-width: 7.5vw}
+
+        &.collapsible-level-0,
+        &.collapsible-level-1 {
+            height: 0;
+        }
+
+        &.collapsible-level-0 {
+            margin: 0;
+            border-top: .1vw solid $black;
+            border-bottom: .1vw solid $black;
+        }
+
+        &.collapsible-level-1 {
+            padding-left: 2.5rem;
+
+            li {
+                &:last-child {
+                    a {
+                        padding-bottom: 0.75rem;
+                    }
+                }
+
+            }
+        }
+
+        .marker-large {
+            display: block;
+            width: .465vw;
+            height: .465vw;
+            border-style: solid;
+            box-sizing: border-box;
+            border-color: transparent;
+            border-radius: 50%;
+            margin-right: .4vw;
+
+            &.marker-hollow:not(.level-0 .marker-hollow) {
+                background-color: transparent !important;
+                border-style: solid;
+                border-width: 0.1rem;
+            }
+
+            &.marker-hollow {
+                &.bg-red-100 {
+                    border-color: $kennedys-red-100;
+                }
+                &.bg-green-100 {
+                    border-color: $kennedys-green-100;
+                }
+                &.bg-orange-100 {
+                    border-color: $kennedys-orange-100;
+                }
+                &.bg-blue-100 {
+                    border-color: $kennedys-blue-100;
+                }
+                &.bg-yellow-100 {
+                    border-color: $kennedys-yellow-100;
+                }
+            }
+        }
+
+        li {
+            margin: 0;
+            background-color: transparent!important;
+
+            // highlights and active state tints
+            &.bg-red-100 { a:hover, .active {color: $kennedys-red-100!important} &:hover .nav-toggle,.is-active,.is-active + ul {background-color: rgba(213, 0, 50, .07);}}
+            &.bg-blue-100 { a:hover, .active {color: $kennedys-blue-100!important} &:hover .nav-toggle,.is-active,.is-active + ul {background-color: rgba(0, 163, 224, .05);}}
+            &.bg-green-100 { a:hover, .active {color: $kennedys-green-100!important} &:hover .nav-toggle,.is-active,.is-active + ul {background-color: rgba(0, 177, 64, .06);}}
+            &.bg-orange-100 { a:hover, .active {color: $kennedys-orange-100!important} &:hover .nav-toggle,.is-active,.is-active + ul {background-color: rgba(255, 106, 0, .05)}}
+            &.bg-yellow-100 { a:hover, .active {color: $kennedys-yellow-100!important} &:hover .nav-toggle,.is-active,.is-active + ul {background-color: rgba(255, 184, 28, .05);}}
+
+            a {
+                text-decoration: none;
+                display: inline-flex;
+                width: 100%;
+                color: $kennedys-black-10;
+                white-space: nowrap;
+                cursor: pointer !important;
+                user-select: none;
+                padding: .2vw .75vw .2vw .6vw;
+                font-size: $size-extra-small;
+            }
+
+            .material-icons {
+              transition: transform 0.3s ease;
+              background-color: transparent!important;
+              font-size: $size-extra-large;
+            }
+
+            .nav-toggle {
+                padding: .4vw .3vw .4vw .6vw;
+                user-select: none;
+
+                &.is-active {
+                    .material-icons {
+                        transform: rotate(180deg);
+                        &.bg-red-100 {color: $kennedys-red-100}
+                        &.bg-blue-100 {color: $kennedys-blue-100}
+                        &.bg-green-100 {color: $kennedys-green-100}
+                        &.bg-orange-100 {color: $kennedys-orange-100}
+                        &.bg-yellow-100 {color: $kennedys-yellow-100}
+                    }
+                }
+
+                .nav-toggle {
+                    margin-right: 0;
+                }
+
+                &.level-0 {
+                    background-color: $kennedys-black-100;
+                    font-family: $medium;
+                    font-size: $size-medium;
+
+                    .level-0-text {margin-top: .1rem}
+                }
+
+                &.level-1 {
+                    font-family: $medium;
+                    font-size: $size-small;
+                    padding: 0 .3vw 0 .45vw;
+                    min-height: 1.3vw;
+
+                    .marker-large {
+                        width: .6rem;
+                        height: .6rem;
+                        margin-left: 1.45rem
+                    }
+
+                    &:not(.collapsible-level-0 li:first-child .level-1) {
+                        border-top: 1px dashed $kennedys-black-75;
+                    }
+
+                    .material-icons {font-size: $size-large}
+                }
+            }
+        }
+    }
+}

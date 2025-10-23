@@ -1,0 +1,58 @@
+@use './variables' as *;
+
+header {
+    &.header-primary {
+        position: fixed;
+        height: 4rem;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        padding: 0 1.75rem;
+        background-color: $kennedys-black-100;
+
+        .kennedys-angle {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 4rem;
+            background: $kennedys-black-75 url('../assets/images/logos/kennedys-logo-wht.svg') no-repeat center center;
+            background-size: 5.75rem;
+            box-sizing: border-box;
+            clip-path: polygon(40px 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+
+        h4 {
+            font-size: $size-large;
+            margin: 0; 
+            padding: 0; 
+            color: $kennedys-yellow-50;
+        }
+
+        .icon-bolt {
+            border: 1px solid $kennedys-yellow-75;
+            border-radius: $size-large;
+            text-align: center;
+            margin-right: .5rem;
+            width: 2rem;
+            height: 2rem;
+        }
+        
+    }
+
+    &.header-secondary {
+        background-color: $kennedys-blue-10;
+        border-bottom: 1px dashed $kennedys-blue-100;
+        padding: 1rem 1.5rem;
+        transition: margin-top 0.2s ease, opacity 0.2s ease;
+        label {margin-bottom: 0!important}
+        h3 {
+            margin: 0 .5rem 0 0;
+        }
+        &.hide {
+            margin-top: -8.25rem;
+        }
+    }
+}

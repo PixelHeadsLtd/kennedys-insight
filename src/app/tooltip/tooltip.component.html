@@ -1,0 +1,10 @@
+<div
+  id="tooltip"
+  class="tooltip {{tooltipStatus}} {{elementColor}}"
+  [ngClass]="getTooltipClasses()"
+  [style.left.px]="left"
+  [style.top.px]="top"
+  [style.width]="tooltipWidth">
+  <div [innerHtml]="tooltip"></div>
+  <ng-content select="[tooltip-html]"></ng-content>
+</div>

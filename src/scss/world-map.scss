@@ -1,0 +1,602 @@
+@use "./variables" as *;
+
+.landing-page {
+    .strapline {
+        position: absolute;
+        z-index: 2;
+        top: 1vw;
+        right: 0;
+        border: 0.07vw dashed $kennedys-black-50;
+        color: $kennedys-black-10;
+        font-family: $mediumitalic;
+        font-size: $size-small;
+        border-radius: 2rem;
+        padding: .4vw .75vw;
+        h4 {
+            color: $kennedys-black-10;
+            font-size: max(.55rem, $size-small);
+        }
+    }
+
+    .map-container {
+        position: relative;
+        width: max(50%, 60%);
+        max-height: 55vw;
+        padding-top: 1.5vw;
+
+        .world-map-wrapper {
+            position: relative;
+            width: 100%;
+
+            .stats-wrapper {
+                position: absolute;
+                bottom: -7vw;
+                z-index: 1;
+                .stats-panel {
+                    color: $kennedys-black-10;
+                    margin: 0 6vw 0 0;
+                    &:first-child {margin-right: calc(6vw - 2vw)}
+                    &:last-child {margin-right: 0}
+                    h3 {
+                        margin: 0 0 .1vw 0;
+                    }
+                    
+                    .icon {
+                        width: 2.5vw;
+                        height: 2.5vw;
+                        border-radius: 50%;
+
+                        &.office {
+                            background: url('../assets/images/icons/real-estate-red.svg') 0 0 no-repeat;
+                        }
+                        &.people {
+                            background: url('../assets/images/icons/people-meeting-blue.svg') 0 0 no-repeat;
+                        }
+                        &.countries {
+                            background: url('../assets/images/icons/global-location-single-green.svg') 0 0 no-repeat;
+                        }
+                    }
+                }
+            }
+
+            // HOVERED OVER REGIONS - FILL SVG COLOURS
+            &.region-canada {.canada .pulse {display:block!important} #canada {fill: $kennedys-red-100}}
+            &.region-usa {.usa .pulse {display:block!important} #usa {fill: $kennedys-red-100}}
+            &.region-uk {.uk .pulse {display:block!important} #uk {fill: $kennedys-blue-100}}
+            &.region-belgium {.belgium .pulse {display:block!important} #belgium {fill: $kennedys-blue-100}}
+            &.region-norway {.norway .pulse {display:block!important} #norway {fill: $kennedys-green-100}}
+            &.region-denmark {.denmark .pulse {display:block!important} #denmark {fill: $kennedys-green-100}}
+            &.region-sweden {.sweden .pulse {display:block!important} #sweden {fill: $kennedys-green-100}}
+            &.region-poland {.poland .pulse {display:block!important} #poland {fill: $kennedys-green-100}}
+            &.region-bermuda {.bermuda .pulse {display:block!important} #bermuda {fill: $kennedys-red-100}}
+            &.region-china {.china .pulse {display:block!important} #china {fill: $kennedys-orange-100}}
+            &.region-hongkong {.hongkong .pulse {display:block!important} #hongkong {fill: $kennedys-orange-100}}
+            &.region-singapore {.singapore .pulse {display:block!important} #singapore {fill: $kennedys-orange-100}}
+            &.region-newzealand {.newzealand .pulse {display:block!important} #newzealand {fill: $kennedys-orange-100}}
+            &.region-australia {.australia .pulse {display:block!important} #australia {fill: $kennedys-orange-100}}
+            &.region-mexico {.mexico .pulse {display:block!important} #mexico {fill: $kennedys-yellow-100}}
+            &.region-guatemala {.guatemala .pulse {display:block!important} #guatemala {fill: $kennedys-yellow-100}}
+            &.region-colombia {.colombia .pulse {display:block!important} #colombia {fill: $kennedys-yellow-100}}
+            &.region-ecuador {.ecuador .pulse {display:block!important} #ecuador {fill: $kennedys-yellow-100}}
+            &.region-peru {.peru .pulse {display:block!important} #peru {fill: $kennedys-yellow-100}}
+            &.region-bolivia {.bolivia .pulse {display:block!important} #bolivia {fill: $kennedys-yellow-100}}
+            &.region-chile {.chile .pulse {display:block!important} #chile {fill: $kennedys-yellow-100}}
+            &.region-ireland {.ireland .pulse {display:block!important} #ireland {fill: $kennedys-green-100}}
+            &.region-france {.france .pulse {display:block!important} #france {fill: $kennedys-green-100}}
+            &.region-spain {.spain .pulse {display:block!important} #spain {fill: $kennedys-green-100}}
+            &.region-italy {.italy .pulse {display:block!important} #italy {fill: $kennedys-green-100}}
+            &.region-dominican {.dominican .pulse {display:block!important} #dominican {fill: $kennedys-yellow-100}}
+            &.region-puertorico {.puertorico .pulse {display:block!important} #puertorico {fill: $kennedys-yellow-100}}
+            &.region-panama {.panama .pulse {display:block!important} #panama {fill: $kennedys-yellow-100}}
+            &.region-brazil {.brazil .pulse {display:block!important} #brazil {fill: $kennedys-yellow-100}}
+            &.region-argentina {.argentina .pulse {display:block!important} #argentina {fill: $kennedys-yellow-100}}
+            &.region-turkey {.turkey .pulse {display:block!important} #turkey {fill: $kennedys-green-100}}
+            &.region-israel {.israel .pulse {display:block!important} #israel {fill: $kennedys-green-100}}
+            &.region-oman {.oman .pulse {display:block!important} #oman {fill: $kennedys-green-100}}
+            &.region-uae {.uae .pulse {display:block!important} #uae {fill: $kennedys-green-100}}
+            &.region-pakistan {.pakistan .pulse {display:block!important} #pakistan {fill: $kennedys-orange-100}}
+            &.region-india {.india .pulse {display:block!important} #india {fill: $kennedys-orange-100}}
+            
+            // THE MAIN INFO-PANEL REPEATER
+            .region-info-panel {
+                position: absolute;
+                width: 1px;
+                height: auto;
+                padding: 0;
+                color: $kennedys-black-10;
+
+                // COUNTRY POSITIONING
+                &.argentina { bottom: -9%; left: 36.2%; height: 24%; .region-info {margin-top: .04vw!important} }
+                &.australia { bottom: -14%; right: 17%; height: 20% }
+                &.belgium { bottom: 78.7%; left: 48.1%; height: 44%; .region-info {left: -.04vw!important} }
+                &.bermuda { bottom: 62%; left: 24.5%; height: 6%; .dash-two {height: 1.5vw!important} .region-info {left: 1.5vw; margin-top: -.04vw!important} }
+                &.bolivia { bottom: 13%; left: 23.5%; height: 17.5%; .dash-two {height: 4.5vw!important} .region-info {right: 5.6vw!important} }
+                &.brazil { top: 68%; left: 30.5%; .dash-wrapper {height: 2.5vw} .dash-two {height: 3vw!important} .region-info { left: 2.7vw !important; margin-top: .04vw!important} }
+                &.canada { bottom: 85%; left: 16%; height: 30% }
+                &.chile { bottom: 3%; left: 23%; height: 10%; .dash-two {height: 4.5vw!important} .region-info {right: 5.3vw!important; margin-top: .04vw!important} }
+                &.china { bottom: 41%; left: 89%; height: 27%; .dash-two {height:3.5vw!important} }
+                &.colombia { bottom: 8.5%; left: 5.9%; height: 36.5%; .dash-one {height: calc(100% + .2vw)!important} .region-info {right: .7vw!important} }
+                &.denmark { bottom: 80.1%; left: 55.9%; height: 41.5%; .dash-two {height: 3vw!important} .region-info {left: 3.2vw; margin-top: -.04vw!important} }
+                &.dominican { top: 43%; left: 23.5%; .dash-wrapper {height: 2.5vw} .dash-two {height: 3.5vw!important} .region-info { left: 3.5vw !important; margin-top: .04vw!important} }
+                &.ecuador { bottom: 33.5%; left: 19.8%; height: 8%; .dash-two {height: 2.7vw!important} .region-info {right: 3.4vw!important; margin-top: .04vw!important} }
+                &.france { bottom: 51.5%; left: 36%; height: 26.5%; .dash-one {height: calc(100% - 2vw)!important} .region-info {right: -1.8vw!important} }
+                &.guatemala { bottom: 28%; left: 5.9%; height: 26%; .dash-one {height: calc(100% - -.5vw)!important} .region-info {right: .7vw!important} }
+                &.hongkong { bottom: 33.5%; left: 91.5%; height: 26% }
+                &.india { bottom: 32%; left: 70%; height: 29%; .region-info {left: -.07vw!important} }
+                &.ireland { bottom: 80.5%; left: 44%; .dash-wrapper {height: 3vw} .dash-outer-one {height: 4vw!important;} .dash-two {height:1vw!important} .region-info {right: 3.05vw!important; top: 1.6vw!important} }
+                &.israel { bottom: 30%; left: 56%; height: 44%; .dash-two {height: 3vw!important} .region-info {right: 5.6vw!important; top: calc(100% - .3vw)!important} }
+                &.italy { bottom: 63.5%; left: 49.5%; height: 11%; .dash-two {height: 5.5vw!important} .region-info {right: 6.25vw!important} }
+                &.mexico { bottom: 57%; left: 14%; .dash-wrapper {height: 3.5vw} .dash-two {height: 5.5vw!important} .region-info {right: 5.6vw!important} }
+                &.newzealand { bottom: 10.4%; left: 94%; height: 15%; .region-info {left: -.03vw!important} }
+                &.norway { bottom: 83%; left: 56.2%; height: 46%; .dash-two {height:3vw!important} .region-info {left: 3vw; margin-top: -.04vw!important} }
+                &.oman { bottom: 18%; left: 63.2%; height: 41%; .region-info {right: .05vw!important} }
+                &.pakistan { bottom: 18%; left: 67%; height: 49%; .region-info {left: -.07vw!important} }
+                &.panama { top: 50.75%; left: 20.65%; .dash-wrapper {height: 3vw} .dash-two {height: 9vw!important} .region-info { left: 8.7vw !important; margin-top: .04vw!important} }
+                &.peru { bottom: 23%; left: 21.4%; height: 10%; .dash-two {height: 3.5vw!important} .region-info {right:4.4vw!important; margin-top: .04vw!important} }
+                &.poland { bottom: 78.6%; left: 56.3%; height: 28%; .dash-two {height: 3vw!important} .region-info {left: 3vw; margin-top: -.05vw!important} }
+                &.puertorico { top: 43.5%; left: 24.8%; .dash-wrapper {height: 3.7vw} .dash-two {height: 4.5vw!important} .region-info { left: 4.5vw !important; margin-top: .02vw!important} }
+                &.singapore { bottom: 13%; left: 91.5%; height: 31%; .region-info {margin-top: .04vw!important }}
+                &.spain { bottom: 44.5%; left: 34.4%; height: 26.5%; .dash-one {height: calc(100% - 3vw)!important} .region-info {right: -2.8vw!important} }
+                &.sweden { bottom: 87%; left: 55.4%; height: 27%; .dash-two {height: 3.5vw!important} .region-info {left: 3.5vw; margin-top: -.05vw!important} }
+                &.turkey { bottom: 38%; left: 54%; height: 34.5%; .dash-two {height: 2.5vw!important} .region-info {right: 4.4vw!important; top: calc(100% - .25vw)!important} }
+                &.uae { bottom: 48%; left: 64.5%; .dash-wrapper {height: 3.2vw} .dash-outer-one {height: 1.5vw!important;} .dash-outer-two {height: 13.5vw} .region-info {right: .09vw!important; bottom: -12vw!important} }
+                &.uk { bottom: 80%; right: 52.3%; height: 53.5% }
+                &.usa { bottom: 71%; left: 17.6%; height: 63% }
+
+                // GLOBAL REGION INFO PANEL
+                &.align-left {
+                    
+                    &:has(.key) {
+                        .region-link {
+                            padding-left: .3vw;
+                            transition: opacity 0.2s ease;
+                            &.hidden { opacity: 0; pointer-events: none; }
+                        }
+                    }
+
+                    .marker-right {display: none;}
+                }
+
+                &.align-right {
+
+                    &:has(.key) {
+                        .region-link {
+                            padding-right: .3vw;
+                            transition: opacity 0.2s ease;
+                            &.hidden { opacity: 0; pointer-events: none; }
+                        }
+                    }
+
+                    .marker-left {display: none;} 
+                    .region-header {justify-content: flex-end;}
+                }
+
+                .region-info {
+                    width: max-content;
+                    position: absolute;
+                    margin: 0 .65vw;
+                    top: -.01vw;
+                    z-index: 1;
+
+                    .region-header {
+                        margin-bottom: .2vw;
+                        div {margin: 0}
+                        label {
+                            position: relative;
+                            font-size: max(0.4rem, 0.6vw);
+                            margin: .05rem 0 0 0;
+                            display: inline-block;
+                            white-space: nowrap;
+                            cursor: pointer;
+                        }
+                        .marker-large {
+                            width: .55vw; 
+                            height: .55vw;
+                            border-style: solid;
+                            box-sizing: border-box;
+                            border-color: transparent;
+                            border-radius: 50%;
+                            transition: all 2s ease-in-out linear;
+
+                            &.key {
+                                width: 1.2vw;
+                                border-radius: .2vw;
+                                height: .8vw;
+                                font-size: 65%;
+                                font-family: $bold;
+                                letter-spacing: 0;
+                                text-align: center;
+                                line-height: .7vw;
+                                transition: all 2s ease-in-out linear;
+                                &.bg-orange-100:not(.marker-hollow),
+                                &.bg-blue-100:not(.marker-hollow),
+                                &.bg-green-100:not(.marker-hollow),
+                                &.bg-yellow-100:not(.marker-hollow) {
+                                    color: $kennedys-black-100;
+                                }
+
+                                // adjust marker pos
+                                &.marker-left {margin: -.15vw .3vw 0 -1.2vw}
+                                &.marker-right {margin: -.15vw -1.25vw 0 .3vw}
+                            }
+
+                            &.marker-left {margin: 0 .3vw 0 -.865vw}
+                            &.marker-right {margin: 0 -.95vw 0 .3vw}
+
+                            &.marker-hollow {
+                                border-width: .1vw;
+                            }
+
+                            &.bg-orange-100 {&.marker-hollow {border-color: $kennedys-orange-100;}}
+                            &.bg-green-100 {&.marker-hollow {border-color: $kennedys-green-100;}}
+                            &.bg-yellow-100 {&.marker-hollow {border-color: $kennedys-yellow-100;}}
+                            &.bg-red-100 {&.marker-hollow {border-color: $kennedys-red-100;}}
+                            &.bg-blue-100 {&.marker-hollow {border-color: $kennedys-blue-100;}}
+                            &.bg-white-100 {&.marker-hollow {border-color: $kennedys-black-10;}}
+                            &.bg-white-dashed-100 {&.marker-hollow {border: .9vw dashed $kennedys-black-10;}}
+                            &.marker-hollow:not(.light-mode .marker-hollow, .colour-mode .marker-hollow) {
+                                background-color: $black!important;
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        + .dash-wrapper {
+                            .dash {
+                                span {
+                                    animation: light-pulse 2s linear infinite;
+                                } 
+
+                                @for $i from 1 through 100 {
+                                        span:nth-child(#{$i}) {
+                                        animation-delay: #{($i - 1) * 0.05}s;
+                                    }
+                                }
+
+                                @keyframes light-pulse {
+                                    0%   { background-color: $kennedys-black-75; }
+                                    10%  { background-color: $white; }
+                                    30%  { background-color: $kennedys-black-75; }
+                                    100% { background-color: $kennedys-black-75; }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // DASH VERTICAL - FLIPPED
+                &.dash-vertical {
+
+                    &.align-left {
+                        .dash {
+                            span {
+                                margin-left: .005vw!important;
+                            }
+                        }
+                        .dash-outer {
+                            .marker-small {
+                                left: -.12vw!important;
+                            }
+                        }
+                    }
+
+                    // DASH VERTICAL AND FLIPPED - SINGLE LINE
+                    &.flipped {
+                        .region-info {
+                            bottom: unset;
+                            top: 100%;
+                        }
+                        .dash-wrapper {
+                            transform: rotate(180deg);
+                            top: .7vw;
+                        }
+                    }
+                }
+
+                // DASH HORIZONTAL - SINGLE LINE
+                &.dash-horizontal {
+                    .region-info {
+                        margin-left: 0;
+                    }
+                    .dash-wrapper {
+                        transform: rotate(90deg);
+                        transform-origin: left top;
+
+                        .dash-outer {
+                            right: -.35vw;
+                        }
+                    }
+
+                    // DASH HORIZONTAL AND FLIPPED - SINGLE LINE
+                    &.flipped {
+                        .dash-wrapper {
+                            transform: rotate(270deg);
+                            top: .7vw;
+                        }
+                    }
+                }
+
+                // DASH ANGELD - 20 DEGREES
+                &.dash-angled {
+                    .region-info {
+                        position: absolute;
+                        cursor: pointer;
+                    }
+
+                    // DASH ANGLED - FLIPPED
+                    &.flipped:not(.dash-angled-rightangle) {
+                        .dash-outer-one {
+                            transform: rotate(90deg)!important;
+                            transform-origin: right top!important;
+                            top: 0!important;
+
+                            .dash-one {
+                                height: calc(100% - .2vw) !important;
+                            }
+                        }
+                        .region-info {
+                            top: -3.8vw;
+                            left: 1.1vw
+                        }
+                        .dash-two {
+                            transform: rotate(-160deg)!important;
+                            bottom: 0 !important;
+                            top: 0 !important;
+                        }
+                    }
+
+                    // DASH ANGLED - FLIPPED X AND Y AXIS
+                    &.flipped-x-and-y {
+                        .region-info {
+                            top: calc(100% - .1vw);
+                            bottom: unset;
+                            left: unset;
+                        }
+                        .dash-wrapper {
+                            transform: scaleY(-1) rotate(-20deg);
+                        }
+                        .dash-outer-one {
+                            transform: unset !important;
+                            .dash-one {
+                                height: calc(100% - .25vw) !important;
+                            }
+                        }
+                        .dash-outer-two {
+                            transform: rotate(200deg);
+                            transform-origin: left top;
+                            .dash-two {
+                                top: .4vw!important;
+                                left: .2vw !important;
+                            }
+                        }
+                    }
+
+                    // DASH ANGLED - RIGHT ANGLE
+                    &.dash-angled-rightangle {
+
+                        // DASH ANGLED - RIGHT ANGLE - FLIPPED
+                        &.flipped {
+                            .dash-wrapper {
+                                position: static;
+                                //transform: scaleY(1) rotate(-20deg);
+                            }
+
+                            .region-info {
+                                top: -.3vw;
+                            }
+
+                            &.align-left {
+                                .region-info {
+                                    top: calc(100% - .4vw);
+                                }
+                                .dash-wrapper {
+                                    transform: scaleX(-1) scaleY(-1);
+                                }
+                            }
+                        }
+
+                        // DASH ANGLED - RIGHT ANGLE - ROTATED
+                        &.rotated {
+                            .dash-wrapper {
+                                position: static;
+                                transform: rotate(-90deg);
+                                transform-origin: bottom left;
+
+                                .dash-outer-two {
+                                    transform: scaleY(-1);
+                                    left: .3vw;
+                                }
+                            }
+                        }
+
+                        // DASH ANGLED - RIGHT ANGLE - HANGING
+                        &.hanging {
+                            .region-info {
+                                right: 0.1vw;
+                                bottom: 0;
+                            }
+
+                            .dash-wrapper {
+                                position: static;
+                                transform: rotate(90deg)!important;
+                                transform-origin: left top!important;
+
+                                .dash-outer-two {
+                                     transform: scaleY(-1);
+                                    left: .3vw;
+
+                                    .dash-two {
+                                        height: 100%!important;
+                                    }
+                                }
+                            }
+                        }
+
+                        .region-info {
+                            top: unset;
+                            left: unset;
+                        }
+
+                        .dash-outer-one {
+                            height: 100%;
+                            top: -.2vw!important;
+                            bottom: 0!important;
+                            left: .15vw!important;
+                            transform: unset !important;
+                            .dash-one {
+                                height: calc(100% - .3vw) !important;
+                            }
+                        }
+                        .dash-outer-two {
+                            transform: rotate(180deg);
+                            transform-origin: left top;
+                            .dash-two {
+                                top: 0!important;
+                                right: 0 !important;
+                            }
+                        }
+                    }
+                    
+                    .dash-outer {
+                        &.dash-outer-one {
+                            top: -.61vw;
+                            transform: rotate(20deg);
+                            transform-origin: left top;
+                        }
+                        .dash {
+                            position: absolute;
+                            &.dash-one {
+                                display: block;
+                                height: calc(100% - .9vw);
+                            }
+                            &.dash-two {
+                                transform: rotate(-90deg);
+                                transform-origin: left top;
+                                display: block;
+                                top: .3vw;
+                                left: -.1vw;
+                            }
+                        }
+                    }
+                }
+
+
+
+                 
+
+                // DASH 20 DEGREES - SINGLE LINE
+                &.dash-angled-solo {
+                    .region-info {
+                        margin: .1vw .15vw 0 .2vw;
+                    }
+                    .dash-wrapper {
+                        transform: rotate(-160deg);
+                        transform-origin: left top;
+                        top: .7vw;
+                        right: -0.45vw!important;
+                    }
+                }
+
+                // START DASH WRAPPER
+                .dash-wrapper {
+                    position: absolute;
+                    top: 0;
+                    width: 0;
+                    height: 100%;
+
+                    .dash-outer {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+
+                        .dash {
+                            position: absolute;
+                            bottom: 0;
+                            height: calc(100% - .6vw);
+                            overflow: hidden;
+
+                            span {
+                                display: block;
+                                text-align: center;
+                                background-color: $kennedys-black-25;
+                                margin: 0 .15vw .15vw 0;
+                                height: .2vw;
+                                width: .05vw;
+                            }
+                        }
+                    }
+                    .marker-small {
+                        border: .07vw solid $white;
+                        width: .2vw; 
+                        height: .2vw; 
+                        bottom: 0; 
+                        left: -0.15vw;
+
+                        .pulse {
+                            position: absolute;
+                            display: none;
+                            top: -.03vw;
+                            left: -.03vw;
+                            width: .2vw; 
+                            height: .2vw; 
+                            border: .007vw solid $white;
+                            border-radius: 50%;
+                            background-color: transparent;
+                            animation: pulse-ring 1.5s infinite ease-out;
+                        }
+
+                        @keyframes pulse-ring {
+                            0% {transform: scale(1); opacity: 1;}
+                            70% {transform: scale(5); opacity: 0;}
+                            100% {transform: scale(5); opacity: 0;}
+                        }
+                    }
+                    .marker-small {
+                        border-radius: 50%;
+                        display: block;
+                        position: absolute;
+                        z-index: 1;
+                    }
+                }
+
+                // IF TEXT IS ALIGNED RIGHT
+                &.align-right {
+                    text-align: right;
+
+                    .region-info {
+                        position: absolute;
+                        right: 0;
+                    }
+
+                    .dash-wrapper {
+                        right: 0;
+                        left: unset;
+                    }
+                }
+
+                a {
+                    color: $kennedys-black-25;
+                    font-family: $regular;
+                    &.region-link {
+                        white-space: nowrap;
+                    }
+                }
+                a,
+                strong,
+                label,
+                p {font-size: max(.3rem, $size-small); margin: 0 0 max(.1rem, .16vw) 0}
+            }
+        }
+
+        // WORLD MAP SETTINGS
+        svg.world-map {
+            width: 100%;
+            height: auto;
+            fill: $kennedys-black-50;
+            stroke: $black;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 1.5;
+        }
+    }
+}

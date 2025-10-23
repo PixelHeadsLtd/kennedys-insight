@@ -1,0 +1,120 @@
+<section class="widgets-container">
+    <div class="flex-group flex-center flex-nowrap">
+        <div
+            *ngFor="let item of widgetsData" 
+            class="widget {{item.widgetType}} flex-group flex-start flex-nowrap flex-center"
+            [ngClass]="{'focused' : item.isFocused}"
+        >
+            <div class="icon"></div>
+            <div class="widget-text ellipsis">
+                <h2>{{item.widgetTitle}}: {{item.widgetCount}}</h2>
+                <strong>{{item.widgetSubtitle}} @if (city) { {{ city }} }</strong>
+                @if (item.showRegion) {<strong>{{ countryName }}</strong>}
+            </div>
+        </div>
+    </div>
+    <app-last-updated></app-last-updated>
+</section>
+<section class="charts flex-group flex-center flex-nowrap">
+    <div class="chart bar-chart">
+        <h4>Revenue by year</h4>
+        <kendo-chart 
+            class="overview-bars" 
+            [legend]="{ visible: false }" 
+            [transitions]="false"
+        >
+            <kendo-chart-category-axis>
+                <kendo-chart-category-axis-item
+                [categories]="barCategories"
+                [majorGridLines]="{ visible: true }"
+                [majorGridLines]="{ visible: true, color: 'rgba(255,255,255,.2)', width: 1 }"
+                [line]="{ visible: false }">
+                </kendo-chart-category-axis-item>
+            </kendo-chart-category-axis>
+
+            <kendo-chart-value-axis>
+                <kendo-chart-value-axis-item
+                [min]="0"
+                [majorGridLines]="{ visible: true }"
+                [majorGridLines]="{ visible: true, color: 'rgba(255,255,255,.2)', width: 1 }"
+                [narrowRange]="true"
+                [line]="{ visible: false }">
+                </kendo-chart-value-axis-item>
+            </kendo-chart-value-axis>
+
+            <kendo-chart-series>
+                <kendo-chart-series-item
+                type="column"
+                [data]="barData"
+                field="value"
+                colorField="color"
+                [gap]="0.5"
+                [spacing]="0.3"
+                [labels]="{ visible: true, position: 'outsideEnd', format: '{0}M', background: 'transparent', color: 'white' }">
+                </kendo-chart-series-item>
+            </kendo-chart-series>
+
+            <kendo-chart-tooltip [visible]="true" format="{0}M"></kendo-chart-tooltip>
+        </kendo-chart>
+    </div>
+
+    <div class="chart donut-chart flex-group flex-start flex-nowrap flex-align-center" #donutWrap>
+        <kendo-chart class="overview-donut">
+            <kendo-chart-tooltip [visible]="false"></kendo-chart-tooltip>
+            <kendo-chart-legend [visible]="false"></kendo-chart-legend>
+            <kendo-chart-series>
+                <kendo-chart-series-item
+                    type="donut"
+                    [data]="donutData"
+                    field="valueVis" 
+                    categoryField="name"
+                    colorField="color"
+                    [holeSize]="donutHoleSize"
+                    [labels]="{ visible: false }"
+                    [tooltip]="{ visible: false }">
+                </kendo-chart-series-item>
+            </kendo-chart-series>
+
+            <ng-template kendoChartDonutCenterTemplate>
+            <div title="Total Matters: {{donutTotal}}" class="chart-details">
+                <h4 [ngClass]="{'shrink-font' : donutTotal > 999}">
+                    <span>{{ donutTotal > 999 ? (donutTotal / 1000 | number:'1.0-0') + '+' : (donutTotal | number:'1.0-0') }}</span>
+                </h4>
+                <h5>Matters</h5>
+            </div>
+            </ng-template>
+        </kendo-chart>
+        <ul class="donut-legend" role="list">
+            <li
+                *ngFor="let d of donutData; trackBy: trackRegion"
+                [ngClass]="d.elementColor"
+            >
+                <span class="name">{{ d.name }}</span>
+                <span class="value">{{ d.valueRaw }}</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="chart waffle-chart">
+        <h4>Staff breakdown by role</h4>
+        <div class="waffle" *ngFor="let r of roles">
+            <div class="waffle__grid" [style.--cols]="cellsPerRow">
+                <span
+                *ngFor="let i of cellIndexes; let idx = index"
+                class="waffle__cell"
+                [class.filled]="idx < r.count"
+                [style.--fill]="r.color">
+                </span>
+            </div>
+            <div class="waffle__label">{{ r.name }}</div>
+        </div>
+    </div>
+</section>
+
+<app-table
+    [rows]="tableRows"
+    [columns]="clientColumns"
+    [elementColor]="elementColor"
+    [maxHeight]="9.5"
+    [marginTop]="1">
+</app-table>

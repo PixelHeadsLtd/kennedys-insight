@@ -1,0 +1,61 @@
+﻿<section class="landing-page flex-group flex-start flex-nowrap">
+    <div class="strapline">
+        Click or hover over a country to explore our offices, staff and matters
+    </div>
+
+    <app-overlay
+        [isOpen]="showOverlay"
+        [regionData]="selectedRegionData"
+        (closeOverlay)="onOverlayClose()"
+        (afterClose)="onOverlayAfterClose()">
+    </app-overlay>
+
+    <app-angled-nav 
+        (mattersFilterChange)="onMattersFilter($event)"
+        (officeFilterChange)="onOfficeFilter($event)"
+        (quickFilterChange)="onQuickFilterChange($event)">
+    </app-angled-nav>
+
+    <div class="map-container flex-group flex-center">
+        <app-world-map 
+            (regionSelected)="onRegionSelected($event)"
+            [mattersFilter]="currentMattersFilter"
+            [searchTerm]="searchTerm"
+            [officeFilter]="currentOfficeFilter">
+        </app-world-map>
+    </div>
+</section>
+
+<!-- <kendo-drawer-container style="position: fixed; width: 100%; height: 100%;">
+    <kendo-drawer [expanded]="drawerExpanded"
+                    [items]="drawerItems"
+                    [position]="'end'"
+                    [mode]="'overlay'"
+                    (click)="closeDrawer()"
+                    (select)="onItemSelect($event)">
+    </kendo-drawer>
+</kendo-drawer-container> -->
+
+<!-- <app-revenue-dialog
+  [visible]="showRevenueModal"
+  (close)="showRevenueModal = false"
+  [revenueTabIndex]="revenueTabIndex"
+  [revenueLoading]="revenueLoading"
+  [revenueGridData]="revenueGridData"
+  [revenueSort]="revenueSort"
+  (sortChange)="onRevenueSortChange($event)"
+  (tabChange)="onRevenueTabSelect($event)"
+  [gridHeight]="gridHeight"
+  [revenueTotals]="revenueTotals"
+  [stackedChartSeries]="stackedChartSeries"
+  [getFlagUrl]="getFlagUrl"
+></app-revenue-dialog>
+>
+
+<app-modal-grid
+    [data]="modalGridData"
+    [visible]="showModal"
+    (close)="showModal = false">
+</app-modal-grid> -->
+
+<div id="loading">Loading data...</div>

@@ -1,0 +1,75 @@
+
+.footer-total-label {
+  display: block;
+  width: 180px;
+  font-weight: bold;
+  color: #444;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding-left: 8px;
+}
+
+.k-grid-footer .k-footer-td:first-child {
+  position: relative;
+}
+.k-grid-footer .k-footer-td:first-child::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: calc(100% + 1px); /* merge with next cell */
+  height: 100%;
+  background: inherit;
+  z-index: 1;
+}
+.k-grid-footer .k-footer-td:first-child span {
+  display: block;
+  width: 200%;
+  font-weight: bold;
+  color: #444;
+  text-align: left;
+  background: transparent;
+  border: none;
+}
+
+.billed-col, td.billed-col, .k-grid td.billed-col {
+  color: rgb(146, 120, 6) !important;
+}
+
+.k-drawer-item:first-child {
+    pointer-events: none;
+    height: 40px; 
+    background: transparent;
+}
+
+.k-overlay {
+  background: rgba(0, 0, 0, 0.2) !important;
+  opacity: 1 !important;
+  z-index: 1000 !important;
+}
+
+.matters-modal .k-dialog,
+.matters-modal .k-window {
+  background: rgba(255,255,255,0.95) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 32px 0 rgba(145, 95, 136, 0.7) !important;
+  z-index: 1001 !important;
+}
+
+.matters-modal .k-dialog-content,
+.matters-modal .k-window-content {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.matters-modal .k-dialog-titlebar {
+  background: rgba(101, 66, 153, 0.5) !important;
+  color: #fff !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.25), 0 1.5px 6px 0 rgba(121, 92, 145, 0.18) !important;
+  background-image: none !important;
+  filter: none !important;
+  text-shadow: 0 2px 8px rgba(80, 5, 64, 0.78), 0 1px 2px rgba(238, 25, 209, 0.58);
+}

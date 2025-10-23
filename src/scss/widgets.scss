@@ -1,0 +1,198 @@
+@use "./variables" as *;
+
+.tabbed-content {
+
+    .widgets-container {
+        position: relative;
+
+        .widget {
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 10rem;
+            padding: .25vw 1.25vw .25vw .25vw;
+            max-width: fit-content;
+            margin: .3vw .4vw 1.4vw .4vw;
+            background-color: $black-tint-08;
+
+            h2 {
+                font-size: $size-large;
+                margin-bottom: .2vw;
+            }
+
+            .icon {
+                width: 2.25vw;
+                height: 2.25vw;
+                background-repeat: no-repeat;
+            }
+
+            .widget-text {
+                max-width: 8vw;
+            }
+        }
+
+        .last-updated {
+            position: absolute;
+            font-family: $italic;
+            font-size: $size-extra-small;
+            color: $kennedys-black-10;
+            right: 0;
+            bottom: .25vw;
+        }
+    }
+
+    /* RED */
+    &.red-100 {
+        .widgets-container {
+            border-bottom: 1px dashed $kennedys-red-100;
+
+            .widget {
+                border-color: $kennedys-red-100;
+
+                &.focused {
+                    background-color: $kennedys-red-100 !important;
+                    border-color: $kennedys-red-100;
+                    * {
+                        color: $kennedys-black-10 !important;
+                    }
+
+                    &.offices {.icon {background-image: url("../assets/images/icons/real-estate-white.svg");}}
+                    &.staff {.icon {background-image: url("../assets/images/icons/people-meeting-white.svg");}}
+                    &.revenue {.icon {background-image: url("../assets/images/icons/banknotes-white.svg");}}
+                    &.matters {.icon {background-image: url("../assets/images/icons/gavel-white.svg");}}
+                    &.key-regions {.icon {background-image: url("../assets/images/icons/global-location-multi-white.svg");}}
+                }
+
+                /* not-focused */
+                &.offices {background-color: $black;.icon {background-image: url("../assets/images/icons/real-estate-red.svg");}}
+                &.staff {background-color: $black;.icon {background-image: url("../assets/images/icons/people-meeting-red.svg");}}
+                &.revenue {background-color: $black;.icon {background-image: url("../assets/images/icons/banknotes-red.svg");}}
+                &.matters {background-color: $black;.icon {background-image: url("../assets/images/icons/gavel-red.svg");}}
+                &.key-regions {background-color: $black;.icon {background-image: url("../assets/images/icons/global-location-multi-red.svg");}}
+            }
+        }
+    }
+
+    /* BLUE */
+    &.blue-100 {
+        .widgets-container {
+            border-bottom: 1px dashed $kennedys-blue-100;
+            .widget {
+                border-color: $kennedys-blue-100;
+
+                &.focused {
+                    background-color: $kennedys-blue-100 !important;
+                    border-color: $kennedys-blue-100;
+                    * {
+                        color: $kennedys-black-10 !important;
+                    }
+
+                    &.offices {.icon {background-image: url("../assets/images/icons/real-estate-white.svg");}}
+                    &.staff {.icon {background-image: url("../assets/images/icons/people-meeting-white.svg");}}
+                    &.revenue {.icon {background-image: url("../assets/images/icons/banknotes-white.svg");}}
+                    &.matters {.icon {background-image: url("../assets/images/icons/gavel-white.svg");}}
+                    &.key-regions {.icon {background-image: url("../assets/images/icons/global-location-multi-white.svg");}}
+                }
+
+                /* not-focused */
+                &.offices {.icon {background-image: url("../assets/images/icons/real-estate-blue.svg");}}
+                &.staff {.icon {background-image: url("../assets/images/icons/people-meeting-blue.svg");}}
+                &.revenue {.icon {background-image: url("../assets/images/icons/banknotes-blue.svg");}}
+                &.matters {.icon {background-image: url("../assets/images/icons/gavel-blue.svg");}}
+                &.key-regions {.icon {background-image: url("../assets/images/icons/global-location-multi-blue.svg");}}
+            }
+        }
+    }
+
+    /* GREEN */
+    &.green-100 {
+        .widgets-container {
+            border-bottom: 1px dashed $kennedys-green-100;
+            .widget {
+                border-color: $kennedys-green-100;
+
+                &.focused {
+                    background-color: $kennedys-green-100 !important;
+                    border-color: $kennedys-green-100;
+                    * {
+                        color: $kennedys-black-10 !important;
+                    }
+
+                    &.offices {.icon {background-image: url("../assets/images/icons/real-estate-white.svg");}}
+                    &.staff {.icon {background-image: url("../assets/images/icons/people-meeting-white.svg");}}
+                    &.revenue {.icon {background-image: url("../assets/images/icons/banknotes-white.svg");}}
+                    &.matters {.icon {background-image: url("../assets/images/icons/gavel-white.svg");}}
+                    &.key-regions {.icon {background-image: url("../assets/images/icons/global-location-multi-white.svg");}}
+                }
+
+                /* not-focused */
+                &.offices {.icon {background-image: url("../assets/images/icons/real-estate-green.svg");}}
+                &.staff {.icon {background-image: url("../assets/images/icons/people-meeting-green.svg");}}
+                &.revenue {.icon {background-image: url("../assets/images/icons/banknotes-green.svg");}}
+                &.matters {.icon {background-image: url("../assets/images/icons/gavel-green.svg");}}
+                &.key-regions {.icon {background-image: url("../assets/images/icons/global-location-multi-green.svg");}}
+            }
+        }
+    }
+
+    /* ORANGE */
+    &.orange-100 {
+        .widgets-container {
+            border-bottom: 1px dashed $kennedys-orange-100;
+            .widget {
+                border-color: $kennedys-orange-100;
+
+                &.focused {
+                    background-color: $kennedys-orange-100 !important;
+                    border-color: $kennedys-orange-100;
+                    * {
+                        color: $kennedys-black-10 !important;
+                    }
+
+                    &.offices {.icon {background-image: url("../assets/images/icons/real-estate-white.svg");}}
+                    &.staff {.icon {background-image: url("../assets/images/icons/people-meeting-white.svg");}}
+                    &.revenue {.icon {background-image: url("../assets/images/icons/banknotes-white.svg");}}
+                    &.matters {.icon {background-image: url("../assets/images/icons/gavel-white.svg");}}
+                    &.key-regions {.icon {background-image: url("../assets/images/icons/global-location-multi-white.svg");}}
+                }
+
+                /* not-focused */
+                &.offices {.icon {background-image: url("../assets/images/icons/real-estate-orange.svg");}}
+                &.staff {.icon {background-image: url("../assets/images/icons/people-meeting-orange.svg");}}
+                &.revenue {.icon {background-image: url("../assets/images/icons/banknotes-orange.svg");}}
+                &.matters {.icon {background-image: url("../assets/images/icons/gavel-orange.svg");}}
+                &.key-regions {.icon {background-image: url("../assets/images/icons/global-location-multi-orange.svg");}}
+            }
+        }
+    }
+
+    /* YELLOW */
+    &.yellow-100 {
+        .widgets-container {
+            border-bottom: 1px dashed $kennedys-yellow-100;
+            .widget {
+                border-color: $kennedys-yellow-100;
+
+                &.focused {
+                    background-color: $kennedys-yellow-100 !important;
+                    border-color: $kennedys-yellow-100;
+                    * {
+                        color: $kennedys-black-100 !important;
+                    }
+
+                    &.offices {.icon {background-image: url("../assets/images/icons/real-estate-black.svg");}}
+                    &.staff {.icon {background-image: url("../assets/images/icons/people-meeting-black.svg");}}
+                    &.revenue {.icon {background-image: url("../assets/images/icons/banknotes-black.svg");}}
+                    &.matters {.icon {background-image: url("../assets/images/icons/gavel-black.svg");}}
+                    &.key-regions {.icon {background-image: url("../assets/images/icons/global-location-multi-black.svg");}}
+                }
+
+                /* not-focused */
+                &.offices {.icon {background-image: url("../assets/images/icons/real-estate-yellow.svg");}}
+                &.staff {.icon {background-image: url("../assets/images/icons/people-meeting-yellow.svg");}}
+                &.revenue {.icon {background-image: url("../assets/images/icons/banknotes-yellow.svg");}}
+                &.matters {.icon {background-image: url("../assets/images/icons/gavel-yellow.svg");}}
+                &.key-regions {.icon {background-image: url("../assets/images/icons/global-location-multi-yellow.svg");}}
+            }
+        }
+    }
+}

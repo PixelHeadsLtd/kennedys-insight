@@ -1,0 +1,209 @@
+@use './variables' as *;
+
+/* -------- Form Elements --------*/
+.k-toolbar,
+.k-grouping-header {
+	&:before {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+}
+
+.k-grid-pager {
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+}
+
+// This is the pagination count
+.k-grid-pager {
+	.k-pager-info {
+		font-family: $medium;
+		color: $kennedys-black-50;
+	}
+}
+
+// These are the small Kendo closable tag widgets
+.k-grouping-header {
+	padding-left: 0;
+	.k-chip-list {
+		.k-chip {
+			background-color: $kennedys-black-75;
+			font-family: $regular;
+			color: $kennedys-yellow-50;
+		}
+	}
+}
+
+// This is the toggle radio on/off switch
+.k-switch {
+	&.k-switch-md {
+		width: 3rem;
+		height: 1.5rem;
+
+		.k-switch-label-on,
+		.k-switch-label-off {
+			font-size: $size-extra-small !important;
+			top: 56%;
+		}
+
+		&.k-switch-on {
+			.k-switch-thumb-wrap {
+				.k-switch-thumb {
+					transform: translate(-40%, -50%);
+				}
+			}
+			.k-switch-track {
+				&.k-rounded-full {
+					background-color: $kennedys-blue-100;
+					border-color: $kennedys-blue-100;
+					height: 1.5rem;
+					width: 3rem;
+				}
+			}
+		}
+
+		&.k-switch-off {
+			.k-switch-thumb-wrap {
+				.k-switch-thumb {
+					transform: translate(-60%, -50%);
+				}
+			}
+			.k-switch-track {
+				&.k-rounded-full {
+					background-color: $kennedys-blue-10;
+					border-color: $kennedys-blue-50;
+					height: 1.5rem;
+					width: 3rem;
+				}
+			}
+		}
+
+		.k-switch-thumb-wrap {
+			.k-switch-thumb {
+				&.k-rounded-full {
+					width: 1.25rem;
+					height: 1.25rem;
+				}
+			}
+		}
+	}
+}
+
+// Table
+.k-grid-aria-root{
+	height: calc(100vh - 18rem);
+}
+
+table {
+	&.k-grid-header-table {
+		thead {
+			tr {
+				&.k-filter-row.k-table-row {
+					background-color: $kennedys-blue-25;
+				}
+				&.k-table-row {
+					background-color: $kennedys-black-75;
+
+					th[role="presentation"] {
+						background-color: transparent;
+					}
+				}
+			}
+		}
+	}
+	&.k-grid-table {
+		tbody {
+			tr {
+				&.k-grouping-row {
+					td.k-table-td {
+						padding: 0;
+						border-bottom: 1px solid $kennedys-blue-50;
+
+						p.k-reset {
+							padding: 0.25rem 0.75rem;
+							background-color: $kennedys-blue-10;
+						}
+					}
+				}
+
+				&.k-master-row {
+					td {
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						font-family: $medium;
+					}
+				}
+			}
+		}
+	}
+}
+
+button {
+	&.k-button-flat-primary {
+		color: $kennedys-red-100;
+
+		&:before {
+			background-color: $kennedys-red-50;
+		}
+	}
+}
+
+// Datepicker
+.k-datepicker {
+	border-radius: 0!important;
+	background-color: $kennedys-black-10;
+	width: max(6rem, 7vw);
+	height: max(1.25rem, 1.3vw);
+	opacity: .4;
+	border: none;
+
+	.k-input-button {
+		padding-right: .25vw!important;
+	}
+
+	&.k-focus {
+		opacity: 1;
+		&:after {
+			border: none!important;
+		}
+	}
+
+	// icon
+	.k-svg-i-calendar.k-button-icon.k-svg-icon.k-icon {
+		color: $kennedys-blue-100!important;
+	}
+
+	.k-input.k-dateinput {
+		input.k-input-inner {
+			background-color: $kennedys-black-10;
+			color: $kennedys-black-100;
+			font-size: max(.75rem, $size-small)!important;
+			padding-left: .5vw;
+		}
+		.k-input-button.k-icon-button.k-button-solid {
+			color: $kennedys-blue-100!important;
+		}
+	}
+
+	.k-input-button.k-button.k-icon-button.k-button-solid {
+		.k-icon-wrapper-host {
+			span {
+				color: $kennedys-blue-100!important;
+			}
+		}
+	}
+}
+
+// Datepicker popup
+.k-animation-container {
+	.k-calendar .k-calendar-td.k-selected .k-link {
+		background-color: $kennedys-blue-100!important;
+	}
+	.k-calendar-view .k-today {
+		box-shadow:  0 0 0 1px $kennedys-blue-100!important;
+	}
+	.k-calendar-title.k-button.k-button-md.k-rounded-md.k-button-flat-primary.k-button-flat {
+		color: $kennedys-red-100
+	}
+}
