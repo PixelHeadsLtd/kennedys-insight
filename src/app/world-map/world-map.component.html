@@ -55,8 +55,12 @@
                             {{ region.staffCount > 999 ? '999+' : region.staffCount }}
                         </span>
                     </div>
-
-                    <label class="{{ region.elementColor }}">
+                    
+                    <label 
+                        class="{{ region.elementColor }}" 
+                        (click)="onRegionNameClick(region)"
+                        style="cursor: pointer;"
+                        >
                         {{ region.name }}
                     </label>
 

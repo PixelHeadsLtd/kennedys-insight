@@ -149,7 +149,7 @@ export class WorldMapComponent implements OnInit {
 
     if (changes['officeFilter']) {
       if (!this.officeFilter || !this.officeFilter.type) {
-        // Filter cleared — remove counts
+        // Clear counts
         this.regions = this.regionDataService.getRegions().map(r => ({
           ...r,
           officeCount: undefined,
@@ -162,49 +162,80 @@ export class WorldMapComponent implements OnInit {
 
       const { type } = this.officeFilter;
 
-      switch (type) {
-        case 'offices':
-          this.regions = this.regions.map(r => ({
-            ...r,
-            officeCount: Math.floor(Math.random() * 5) + 1
-          }));
-          break;
+      this.regions = this.regions.map(r => {
+        const cities = r.cities || [];
+        let cityMap: Record<string, number> = {};
+        let total = 0;
 
-        case 'associated':
-          this.regions = this.regions.map(r => ({
-            ...r,
-            associatedCount: Math.floor(Math.random() * 3)
-          }));
-          break;
+        switch (type) {
+          case 'offices':
+            cityMap = cities.reduce((acc: any, city: string) => {
+              acc[city] = Math.floor(Math.random() * 3) + 1;
+              return acc;
+            }, {});
+            total = Object.values(cityMap).reduce((s: number, n: any) => s + n, 0);
+            r.officeCityCounts = cityMap;
+            r.officeCount = total;
+            break;
 
-        case 'staff':
-          this.regions = this.regions.map(r => ({
-            ...r,
-            staffCount: Math.floor(Math.random() * 500) + 50
-          }));
-          break;
-      }
+          case 'associated':
+            cityMap = cities.reduce((acc: any, city: string) => {
+              acc[city] = Math.floor(Math.random() * 2);
+              return acc;
+            }, {});
+            total = Object.values(cityMap).reduce((s: number, n: any) => s + n, 0);
+            r.associatedCityCounts = cityMap;
+            r.associatedCount = total;
+            break;
+
+          case 'staff':
+            cityMap = cities.reduce((acc: any, city: string) => {
+              acc[city] = Math.floor(Math.random() * 80) + 20;
+              return acc;
+            }, {});
+            total = Object.values(cityMap).reduce((s: number, n: any) => s + n, 0);
+            r.staffCityCounts = cityMap;
+            r.staffCount = total;
+            break;
+        }
+
+        return r;
+      });
 
       this.cdr.markForCheck();
     }
+
   }
 
   private applySearchFilter(): void {
     const term = (this.searchTerm ?? '').toLowerCase().trim();
 
-    // Always start fresh from full list (so deletions re-expand)
+    // Start from all regions, keeping existing counts
     const baseRegions = this.regionDataService.getRegions().map(r => {
       const existing = this.regions.find(er => er.id === r.id);
       return { ...r, ...existing };
     });
 
+    // Helper to sum per-city values from a given map
+    const sumFor = (map: Record<string, number> | undefined, cities: string[]) => {
+      if (!map) return undefined;
+      return cities
+        .map((c: string) => map[c] || 0)
+        .reduce((sum: number, n: number) => sum + n, 0);
+    };
+
     if (!term) {
-      // 🟢 Reset to full list with totals restored
+      // Reset all regions & restore totals
       this.regions = baseRegions.map(r => {
+        r.filteredCities = r.cities || [];
         if (r.cityCounts) {
-          r.filteredCities = r.cities || [];
-          r.mattersCount = Object.values(r.cityCounts)
-            .reduce((sum: number, n: any) => sum + (n as number), 0);
+          r.mattersCount = sumFor(r.cityCounts, r.cities || []);
+        }
+        if (r.officeCityCounts) {
+          r.officeCount = sumFor(r.officeCityCounts, r.cities || []);
+        }
+        if (r.staffCityCounts) {
+          r.staffCount = sumFor(r.staffCityCounts, r.cities || []);
         }
         return r;
       });
@@ -212,23 +243,44 @@ export class WorldMapComponent implements OnInit {
       return;
     }
 
-    // Filter cities for each region and recalc counts
-    this.regions = baseRegions.map(r => {
-      const allCities = r.cities || [];
-      const filteredCities = allCities.filter((c: string) =>
-        c.toLowerCase().includes(term)
-      );
+    // Filter: keep only regions whose name or any city matches
+    this.regions = baseRegions
+      .filter(r =>
+        r.name.toLowerCase().includes(term) ||
+        (r.cities?.some((c: string) => c.toLowerCase().includes(term)))
+      )
+      .map(r => {
+        const allCities = r.cities || [];
+        const matchingCities = allCities.filter((c: string) =>
+          c.toLowerCase().includes(term)
+        );
 
-      // Recalculate per-region total based only on visible cities
-      let filteredCount = r.mattersCount;
-      if (r.cityCounts) {
-        filteredCount = filteredCities
-          .map((c: string) => r.cityCounts[c] || 0)
-          .reduce((sum: number, n: number) => sum + n, 0);
-      }
+        // Keep all cities visible in matched region
+        r.filteredCities = allCities;
 
-      return { ...r, filteredCities, mattersCount: filteredCount };
-    });
+        // Dynamically recalc counts based on matching cities only
+        // Dynamically recalc counts based on matching cities OR region match
+        const regionMatches = r.name.toLowerCase().includes(term);
+
+        if (r.cityCounts) {
+          r.mattersCount = regionMatches
+            ? sumFor(r.cityCounts, r.cities || [])
+            : sumFor(r.cityCounts, matchingCities);
+        }
+
+        if (r.officeCityCounts) {
+          r.officeCount = regionMatches
+            ? sumFor(r.officeCityCounts, r.cities || [])
+            : sumFor(r.officeCityCounts, matchingCities);
+        }
+
+        if (r.staffCityCounts) {
+          r.staffCount = regionMatches
+            ? sumFor(r.staffCityCounts, r.cities || [])
+            : sumFor(r.staffCityCounts, matchingCities);
+        }
+        return r;
+      });
 
     this.cdr.markForCheck();
   }
