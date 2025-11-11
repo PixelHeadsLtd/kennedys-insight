@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output, Input, OnInit, ChangeDetectionStrategy, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { RegionDataService } from '../services/region-data.service';
@@ -25,6 +26,8 @@ export class WorldMapComponent implements OnInit {
   TooltipPosition = TooltipPosition;
   elementColor: string = '';
   hoveredRegion: string | null = null;
+  hoveredCity: string | null = null;
+  private cityScrollPositions = new WeakMap<HTMLElement, number>();
   private clearTimer: any = null;
 
   // Krish: top-level headline stats under the map (offices/people/countries).
@@ -120,10 +123,165 @@ export class WorldMapComponent implements OnInit {
     private regionDataService: RegionDataService,
     private statsService: CompanyStatsService,
     private http: HttpClient,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private sanitizer: DomSanitizer
   ) {
     // Krish: component consumes the stream; service decides where it comes from.
     this.stats$ = this.statsService.stats$;
+  }
+
+  getSafeSvg(region: any): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(region.svg?.raw || '');
+  }
+
+  onCitiesWheel(event: WheelEvent) {
+    const container = event.currentTarget as HTMLElement;
+    const inner = container.querySelector('.cities-inner') as HTMLElement;
+    if (!inner) return;
+
+    const style = window.getComputedStyle(container);
+    const maxHeight = parseFloat(style.maxHeight || '0');
+    if (!maxHeight || inner.scrollHeight <= container.clientHeight) return;
+
+    event.preventDefault();
+
+    const maxTranslate = inner.scrollHeight - container.clientHeight;
+    const current = this.cityScrollPositions.get(container) ?? 0;
+    const next = Math.min(Math.max(current + event.deltaY, -maxTranslate), 0);
+
+    inner.style.transition = 'transform 0.25s ease-out';
+    inner.style.transform = `translateY(${next}px)`;
+    this.cityScrollPositions.set(container, next);
+
+    this.updateCitiesFade(container);
+  }
+      
+  updateCitiesFade(container: HTMLElement) {
+    const inner = container.querySelector('.cities-inner') as HTMLElement;
+    if (!inner) return;
+
+    // Skip fade if content doesn't overflow
+    if (inner.scrollHeight <= container.clientHeight) {
+      inner.querySelectorAll<HTMLElement>('.region-link')
+        .forEach(link => (link.style.opacity = '1'));
+      return;
+    }
+
+    const rect = container.getBoundingClientRect();
+    const centerY = rect.height / 2;
+    const fadeDistance = rect.height * 0.9;
+    const minOpacity = 0.5;
+    const links = inner.querySelectorAll<HTMLElement>('.region-link');
+
+    links.forEach(link => {
+      const linkRect = link.getBoundingClientRect();
+      const linkCenter = linkRect.top + linkRect.height / 2 - rect.top;
+      const distance = Math.abs(linkCenter - centerY);
+      const opacity = Math.max(minOpacity, 1 - distance / fadeDistance);
+      link.style.opacity = opacity.toFixed(2);
+    });
+  }
+
+  onCitiesMouseMove(event: MouseEvent) {
+    const container = event.currentTarget as HTMLElement;
+    const inner = container.querySelector('.cities-inner') as HTMLElement;
+    if (!inner) return;
+
+    // do nothing unless a max-height is set AND content overflows
+    const style = window.getComputedStyle(container);
+    const maxHeight = parseFloat(style.maxHeight || '0');
+    if (!maxHeight || inner.scrollHeight <= container.clientHeight) return;
+
+    const rect = container.getBoundingClientRect();
+    const mouseY = event.clientY - rect.top;
+    const ratio = Math.min(Math.max(mouseY / rect.height, 0), 1);
+
+    const maxTranslate = inner.scrollHeight - rect.height;
+    const overscroll = rect.height * 0.1;
+    const translateY = -(maxTranslate + 2 * overscroll) * ratio + overscroll;
+
+    inner.style.transition = 'transform 0.3s ease-out';
+    inner.style.transform = `translateY(${translateY}px)`;
+    this.updateCitiesFade(container);
+  }
+
+
+  onCitiesMouseLeave(event: MouseEvent) {
+    const container = event.currentTarget as HTMLElement;
+    const inner = container.querySelector('.cities-inner') as HTMLElement;
+    if (!inner) return;
+
+    // Skip reset animation for short lists
+    if (inner.scrollHeight <= container.clientHeight) return;
+
+    inner.style.transition = 'transform 0.8s ease-out';
+    inner.style.transform = 'translateY(0)';
+
+    setTimeout(() => this.updateCitiesFade(container), 800);
+  }
+
+  ngAfterViewInit() {
+    // Initialise all .cities containers once view has rendered
+    const citiesContainers = document.querySelectorAll<HTMLElement>('.cities');
+
+    citiesContainers.forEach(container => {
+      const inner = container.querySelector('.cities-inner') as HTMLElement;
+      if (!inner) return;
+
+      // reset transform baseline
+      inner.style.transform = 'translateY(0)';
+
+      // ensure transition is defined for smooth wheel/hover
+      inner.style.transition = 'transform 0.3s ease-out';
+
+      // apply initial fade
+      this.updateCitiesFade(container);
+
+      // store initial scroll position (so wheel works right away)
+      this.cityScrollPositions.set(container, 0);
+    });
+  }
+
+  // --- Helpers for static map bindings ---
+  // --- Region data lookup for static map bindings ---
+  getRegionValue(regionId: string, key: string, cityName?: string): any {
+    const region = this.regions?.find(r => r.id === regionId);
+    if (!region) return undefined;
+
+    // --- City-level count (e.g. officeCityCounts['Austin'])
+    if (cityName && key.endsWith('CityCounts')) {
+      const map = region[key] as Record<string, number>;
+      return map ? map[cityName] : undefined;
+    }
+
+    // --- Region-level field (e.g. officeCount, staffCount)
+    return region[key];
+  }
+
+  getRegion(id: string) {
+    return this.regions.find(r => r.id === id);
+  }
+
+  // Add this anywhere inside your WorldMapComponent class
+  manualCityClick(regionId: string, cityName: string, event?: MouseEvent): void {
+    event?.stopPropagation();
+    const region = this.getRegion(regionId);
+    if (!region) return;
+
+    this.regionSelected.emit({
+      country: region.name,
+      city: cityName,
+      flag: region.flag,
+      region: region.region,
+      elementColor: region.elementColor
+    });
+  }
+
+  cityClass(city: string): string {
+    return city
+      .toLowerCase()
+      .replace(/\s+/g, '-')      // replace spaces with dashes
+      .replace(/[^a-z0-9\-]/g, ''); // remove any non-alphanumeric chars
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -138,13 +296,15 @@ export class WorldMapComponent implements OnInit {
           ...r,
           mattersCount: undefined
         }));
-        this.cdr.markForCheck(); // 🔹 force re-render
+        this.cdr.markForCheck(); 
+        this.reapplyCityEffects();
         return;
       }
 
       // Otherwise apply random mock counts
       this.updateMattersCounts();
       this.cdr.markForCheck();
+      this.reapplyCityEffects();
     }
 
     if (changes['officeFilter']) {
@@ -157,6 +317,7 @@ export class WorldMapComponent implements OnInit {
           staffCount: undefined
         }));
         this.cdr.markForCheck();
+        this.reapplyCityEffects();
         return;
       }
 
@@ -203,6 +364,7 @@ export class WorldMapComponent implements OnInit {
       });
 
       this.cdr.markForCheck();
+      this.reapplyCityEffects();
     }
 
   }
@@ -240,6 +402,7 @@ export class WorldMapComponent implements OnInit {
         return r;
       });
       this.cdr.markForCheck();
+      this.reapplyCityEffects();
       return;
     }
 
@@ -283,6 +446,7 @@ export class WorldMapComponent implements OnInit {
       });
 
     this.cdr.markForCheck();
+    this.reapplyCityEffects();
   }
 
   filteredCities(region: any): string[] {
@@ -315,6 +479,7 @@ export class WorldMapComponent implements OnInit {
     });
 
     this.cdr.markForCheck();
+    this.reapplyCityEffects();
   }
 
   private describeRange(range: string): string {
@@ -362,9 +527,9 @@ export class WorldMapComponent implements OnInit {
   ];
 
   // --- Hover highlights (UI only) ---
-  setHoveredRegion(id: string, color?: string): void {
+  setHoveredRegion(regionId: string, color?: string): void {
     if (this.clearTimer) { clearTimeout(this.clearTimer); this.clearTimer = null; }
-    this.hoveredRegion = id;
+    this.hoveredRegion = regionId.toLowerCase().replace(/\s+/g, '-');
     if (color) this.elementColor = color;
   }
 
@@ -372,17 +537,21 @@ export class WorldMapComponent implements OnInit {
     if (this.clearTimer) { clearTimeout(this.clearTimer); this.clearTimer = null; }
     if (immediate) {
       this.hoveredRegion = null;
-      this.elementColor = '';
-      return;
-    }
-    const expected = this.hoveredRegion;
-    this.clearTimer = setTimeout(() => {
-      if (this.hoveredRegion === expected) {
+      this.hoveredCity = null;
+    } else {
+      this.clearTimer = setTimeout(() => {
         this.hoveredRegion = null;
-        this.elementColor = '';
-      }
-      this.clearTimer = null;
-    }, 100);
+        this.hoveredCity = null;
+      }, 300);
+    }
+  }
+
+  setHoveredCity(city: string): void {
+    this.hoveredCity = city.toLowerCase().replace(/\s+/g, '-');
+  }
+
+  clearHoveredCity(): void {
+    this.hoveredCity = null;
   }
 
 
@@ -419,4 +588,20 @@ export class WorldMapComponent implements OnInit {
       });
     }
   }
+
+  private reapplyCityEffects(): void {
+    setTimeout(() => {
+      const containers = document.querySelectorAll<HTMLElement>('.cities');
+      containers.forEach(container => {
+        const inner = container.querySelector('.cities-inner') as HTMLElement;
+        if (!inner) return;
+
+        inner.style.transform = 'translateY(0)';
+        inner.style.transition = 'transform 0.3s ease-out';
+        this.updateCitiesFade(container);
+        this.cityScrollPositions.set(container, 0);
+      });
+    }, 50);
+  }
+
 }

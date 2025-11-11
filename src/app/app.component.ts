@@ -193,6 +193,8 @@ updateSelectedRegionFromUrl(url: string) {
  * Krish: If you prefer, you could start loading data right here on click.
  */
   onRegionSelected(data: any) {
+    console.log('regionSelected data:', data);
+
   const normalizedCountry = normalize(data.country);
   const cityId = data.city ? normalize(data.city) : null;
 

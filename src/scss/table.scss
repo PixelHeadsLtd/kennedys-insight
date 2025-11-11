@@ -12,6 +12,7 @@
 
     table {
         width: 100%;
+        border-spacing: 0;
         thead {
             th {
                 padding: 0;
@@ -70,7 +71,7 @@
             td {
                 border-bottom: 1px dotted $kennedys-black-75;
                 font-size: $size-small;
-                font-family: $medium;
+                font-family: $regular;
                 color: $kennedys-black-10;
                 padding: .3vw 1vw;
                 text-align: left;

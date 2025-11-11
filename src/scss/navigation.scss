@@ -36,6 +36,15 @@
         &.collapsible-level-1 {
             padding-left: 2.5rem;
 
+            &
+
+            a {
+                cursor: pointer;
+                &.active {
+                    cursor: unset!important;
+                }
+            }
+
             li {
                 &:last-child {
                     a {
@@ -133,6 +142,7 @@
                     background-color: $kennedys-black-100;
                     font-family: $medium;
                     font-size: $size-medium;
+                    cursor: pointer;
 
                     .level-0-text {margin-top: .1rem}
                 }
@@ -142,6 +152,10 @@
                     font-size: $size-small;
                     padding: 0 .3vw 0 .45vw;
                     min-height: 1.3vw;
+                    cursor: pointer;
+                    &.active {
+                        cursor: unset!important;
+                    }
 
                     .marker-large {
                         width: .6rem;

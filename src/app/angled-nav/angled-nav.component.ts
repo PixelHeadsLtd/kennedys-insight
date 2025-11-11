@@ -97,9 +97,49 @@ export class AngledNavComponent implements AfterViewInit, OnInit {
         this.applyTheme(saved);
     }
 
+    // setTheme(theme: Theme) {
+    //     this.applyTheme(theme);
+    //     localStorage.setItem(THEME_KEY, theme);
+    // }
+
     setTheme(theme: Theme) {
-        this.applyTheme(theme);
+        const overlay = this.doc.getElementById('fade-overlay');
+        const current = this.theme;
+
+        // update the bound value immediately so radios stay in sync
+        this.theme = theme;
+
+        // save preference right away too
         localStorage.setItem(THEME_KEY, theme);
+
+        if (!overlay) {
+            this.applyTheme(theme);
+            return;
+        }
+
+        // choose overlay colour depending on direction
+        overlay.style.background =
+            current === 'light-mode' && theme === 'dark-mode' ? '#000' :
+            current === 'dark-mode' && theme === 'light-mode' ? '#fff' :
+            '#000';
+
+        // fade overlay in
+        overlay.style.zIndex = '9999';
+        overlay.style.pointerEvents = 'auto';
+        overlay.style.opacity = '1';
+
+        // after fade-in completes, apply actual body class
+        setTimeout(() => {
+            this.applyTheme(theme);
+
+            // fade overlay back out
+            overlay.style.opacity = '0';
+
+            setTimeout(() => {
+            overlay.style.zIndex = '';
+            overlay.style.pointerEvents = 'none';
+            }, 500); // this must match the css transition
+        }, 500); // this must match the css transition
     }
 
     private applyTheme(theme: Theme) {

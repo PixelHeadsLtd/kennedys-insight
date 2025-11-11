@@ -266,6 +266,7 @@ button:not(.search-wrapper button, .chips button, .k-button) {
                 height: 1.45vw;
                 border-radius: 0;
                 color: $kennedys-black-10;
+                font-size: .55vw;
             }
 
             button {
@@ -284,12 +285,13 @@ button:not(.search-wrapper button, .chips button, .k-button) {
                 &:hover {
                     .material-icons {
                         transform: rotate(90deg);
+                        transition: all 0.5s ease;
                     }
                 }
 
                 .material-icons {
                     font-size: $size-large;
-                    transition: transform 0.3s ease;
+                    transition: all 0.5s ease;
                     transform-origin: center center;
                 }
             }
@@ -306,7 +308,7 @@ button:not(.search-wrapper button, .chips button, .k-button) {
                     }
 
                     &#bd {
-                        fill: $kennedys-black-50;
+                        fill: $kennedys-black-75;
                     }
                 }
                 
@@ -324,12 +326,16 @@ button:not(.search-wrapper button, .chips button, .k-button) {
             border-radius: 50%;
             padding: 0;
             margin-bottom: .25rem;
+            transition: all 0.5s ease;
 
             &:hover {
+                transform: rotate(180deg);
+                transition: all 0.5s ease;
                 svg {
                     #hover {
                         opacity: 1;
                         fill: $kennedys-blue-100;
+                        
                     }
                     circle {
                         stroke: $kennedys-black-10;
@@ -344,7 +350,7 @@ button:not(.search-wrapper button, .chips button, .k-button) {
                 min-height: 100%;
                 circle {
                     stroke-width: 2;
-                    stroke: $kennedys-black-10;
+                    stroke: $kennedys-black-25;
                     stroke-dasharray: 10 4;
                     opacity: .5;
                 }

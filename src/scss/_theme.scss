@@ -1,16 +1,17 @@
 @use "./variables" as *;
 
 body {
-    
-    // START LIGHT-MODE COLOURS
     &.light-mode {
         background-color: $kennedys-black-10;
-        .landing-page {
 
-            label:not(.section-search label) {
-                font-family: $semibold;
-                color: $kennedys-black-100!important
-            }
+        label {
+            font-family: $semibold;
+        }
+
+        .tooltip {
+            //background-color: $white-tint-006;
+        }
+        .landing-page {
 
             .k-input {
                 input,
@@ -69,8 +70,35 @@ body {
                 color: $kennedys-black-100;
             }
 
+            .world-map-wrapper[class*="region-"] {
+                .region-link:not(:hover) {
+                    color: $kennedys-black-10!important;
+                }
+            }
+
+            .map-regions {
+                svg {fill: $kennedys-black-25;}
+            }
+
             .world-map-wrapper {
+                .region {
+                    .buildings {
+                        .bd {
+                            strong {font-family: $bold!important;}
+                        }
+                    }
+                }
+                svg.world-map {
+                    fill: $kennedys-black-50;
+                    stroke: $kennedys-black-10;
+                }
+                .region-svg {
+                    svg {
+                        stroke: $kennedys-black-10!important;
+                    }
+                }
                 .region-info-panel {
+
                     .key {
                         width: 1.2vw;
                         border-radius: .2vw;
@@ -96,14 +124,16 @@ body {
                     h3 {
                         font-family: $semibold;
                     }
-                    a {
-                        color: $kennedys-black-75;
+
+                    .region-link {
+                        color: $kennedys-black-100;
                         font-family: $semibold;
                     }
 
                     .region-header {
                         .marker-large.marker-hollow {
                             background-color: $white!important;
+                            color: $kennedys-black-100!important;
                         }
                     }
 
@@ -114,11 +144,6 @@ body {
                             }
                         }
                     }
-                }
-
-                svg.world-map {
-                    fill: $kennedys-black-50;
-                    stroke: $kennedys-black-10;
                 }
 
                 .stats-panel {
@@ -139,20 +164,23 @@ body {
                         .search-field {
                             input {
                                 color: $kennedys-black-10;
+                                &::placeholder {
+                                    color: $kennedys-black-25;
+                                }
                             }
                             path {
-                                &#bg {fill: $kennedys-black-tint-02;}
+                                &#bg {fill: $kennedys-black-tint-05;}
                                 &#bd {fill: $kennedys-black-25;}
                             }
                             .material-icons {color: $kennedys-black-10}
                         }
                         .close-btn {
                             &:hover {
-                                circle {fill: $kennedys-black-25;}
-                                path {fill: $white!important}
+                                circle {fill: $kennedys-black-75!important;}
+                            //    path {fill: $kennedys-blue-100!important}
                             }
                             circle {
-                                fill: $kennedys-black-75;
+                                fill: $kennedys-black-50;
                                 opacity: 1;
                                 stroke: $kennedys-black-50;
                             }
@@ -168,10 +196,10 @@ body {
                             stroke: $kennedys-black-25;
                         }
 
-                        .overlay-left-nav {fill: $kennedys-black-tint-02}
+                        .overlay-left-nav {fill: $kennedys-black-tint-05}
                         .overlay-left-nav-top {fill: $kennedys-black-100}
                         .overlay-body {fill: $white-tint-004}
-                        .overlay-header {fill: $kennedys-black-tint-02}
+                        .overlay-header {fill: $kennedys-black-tint-05}
                     }
                 }
 
@@ -193,6 +221,7 @@ body {
                 }
 
                 .overlay-inner {
+                    table td {font-family: $medium;}
                     h4:not(.widget h4),
                     h5,
                     span:not(table .material-icons, .tabs span, .nav-container span, h3 span),
@@ -220,199 +249,4 @@ body {
 
         }
     }
-    
-    // START COLOUR-MODE COLOURS
-    &.colour-mode {
-        background-color: $kennedys-blue-10;
-        .landing-page {
-
-            label:not(.section-search label) {
-                font-family: $semibold;
-                color: $kennedys-black-100!important
-            }
-
-            .k-input {
-                input,
-                button {
-                    background-color: $white!important;;
-                }
-            }
-
-            .angled-nav {
-                background-color: $kennedys-blue-25;
-
-                input:not(.section-search input) {
-                    &[type=radio],
-                    &[type=checkbox] {
-                        background-color: $white;
-
-                        &:before {
-                            background-color: $kennedys-blue-100;
-                        }
-                    }
-                }
-
-                .section-search {
-                     background-color: $kennedys-black-75;
-                }
-
-                .section-matters,
-                .section-offices {
-                    background-color: $kennedys-blue-50;
-                }
-
-                .section-key {
-                    li {
-                        &:before {
-                            border-color: $kennedys-black-100;
-                        }
-
-                        &:nth-child(6) {
-                            &:before {
-                                background-color: $kennedys-black-100;
-                            }
-                        }
-                    }
-                }
-
-                h2:not(.section-search h2),
-                label:not(.section-search label) {
-                    color: $kennedys-black-100;
-                }
-            }
-
-            .strapline {
-                border-color: $kennedys-black-25;
-                h4 {color: $kennedys-black-100}
-            }
-
-            .world-map-wrapper {
-                .region-info-panel {
-                    h3 {
-                        font-family: $semibold;
-                    }
-                    a {
-                        color: $kennedys-black-75;
-                        font-family: $semibold;
-                    }
-
-                    .region-header {
-                        .marker-large.marker-hollow {
-                            background-color: $white!important;
-                        }
-                    }
-
-                    .dash-wrapper {
-                        .dash-outer {
-                            .dash span {
-                                background-color: $kennedys-black-50;
-                            }
-                        }
-                    }
-                }
-
-                svg.world-map {
-                    fill: $kennedys-black-25;
-                    stroke: $kennedys-blue-10;
-                }
-
-                .stats-panel {
-                    h1, span {
-                        color: $kennedys-black-100;
-                        font-family: $medium;
-                    }
-                }
-            }
-
-            .overlay {
-                background-color: $kennedys-blue-tint-subtle;
-
-                .overlay-outer {
-                    .search-wrapper {
-                        .search-field {
-                            input {
-                                color: $kennedys-black-100;
-                            }
-                            path {
-                                &#bg {fill: $kennedys-blue-25;}
-                                &#bd {fill: $kennedys-black-25;}
-                            }
-                            .material-icons {color: $kennedys-blue-100}
-                        }
-
-                        .close-btn {
-                            &:hover {
-                                circle {fill: $kennedys-black-25;}
-                                path {fill: $white!important}
-                            }
-                            circle {
-                                fill: $kennedys-blue-25;
-                                opacity: 1;
-                                stroke: $kennedys-black-25;
-                            }
-                            path {
-                                fill: $kennedys-blue-100;
-                            }
-                        }
-                    }
-
-                    .overlay-bg-image {
-                        .overlay-left-nav,
-                        .overlay-left-nav-top,
-                        .overlay-body,
-                        .overlay-header {
-                            stroke: $kennedys-black-25;
-                        }
-
-                        .overlay-left-nav {fill: $white-tint-06}
-                        .overlay-left-nav-top {fill: $kennedys-black-100}
-                        .overlay-body {fill: $white-tint-08}
-                        .overlay-header {fill: $white-tint-06}
-                    }
-                    
-                }
-
-                .nav-container {
-                    ul {
-                        &.collapsible-level-0 {
-                            border-color: $kennedys-black-10;
-                        }
-
-                        li {
-                            background-color: $kennedys-black-10;
-                            span:not(.level-0 span),
-                            a {
-                                color: $kennedys-black-100;
-                            }
-
-                            .nav-toggle.level-0 {
-                                color: $white
-                            }
-                        }
-                    }
-                }
-
-                .overlay-inner {
-                    h2:not(.widget h2),
-                    h3,
-                    span:not(table .material-icons, .tabs span, .nav-container span),
-                    table td,
-                    .waffle__label,
-                    text {
-                        color: $kennedys-black-100!important;
-                        fill: $kennedys-black-100!important;
-                    }
-                    .widget {
-                        background-color: $white;
-                        color: $kennedys-black-100;
-
-                        h2 {
-                            color: $kennedys-black-100;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
 }

@@ -4,14 +4,14 @@
   position: fixed;
   z-index: 999999;
   background-color: $black-tint-08;
-  border-radius: .5vw;
+  border-radius: .25vw;
   border-style: dashed;
-  border-width: .0521vw;
+  border-width: 1px;
   padding: 0;
 
   &.orange-100 header {background-color: $kennedys-orange-tint-subtle;}
   &.green-100 header {background-color: $kennedys-green-tint-subtle;}
-  &.yellow-100 header {background-color: $kennedys-yellow-tint-subtle; h4 {color: $kennedys-black-100;}}
+  &.yellow-100 header {background-color: $kennedys-yellow-tint-subtle; h5 {color: $kennedys-black-100;}}
   &.red-100 header {background-color: $kennedys-red-tint-subtle;}
   &.blue-100 header {background-color: $kennedys-blue-tint-subtle;}
 
@@ -23,13 +23,14 @@
     padding: .45vw .8vw .45vw .8vw;
     margin: -.05vw 0 0 -.05vw;
     width: calc(100% - 1.5vw);
-    border-radius: .5vw .5vw 0 0;
+    border-radius: .25vw .25vw 0 0;
   }
 
   h5 {
     margin: 0;
     white-space: nowrap;
-    font-size: .65vw;
+    font-size: .575vw;
+    font-family: $medium;
   }
 
   ul {
@@ -52,7 +53,7 @@
   }
 
   &--visible {
-    opacity: 1;
+    opacity: .8;
   }
 
   &--below {

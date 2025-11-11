@@ -1,5 +1,6 @@
 // black (kennedys black further down)
 $black: rgb(0, 0, 0);
+$black-tint-06: rgba(0, 0, 0, 0.6);
 $black-tint-08: rgba(0, 0, 0, 0.8);
 
 // white
@@ -61,7 +62,7 @@ $kennedys-red-10:   rgb(251, 230, 234);
 $kennedys-black-100-tint-light: rgb(10, 22, 32);
 $kennedys-black-100-tint-dark: rgb(7, 15, 22);
 
-$kennedys-black-tint-02: rgba(9, 11, 15, .7); // light-mode overlay header
+$kennedys-black-tint-02: rgba(5, 5, 7, 0.7); // light-mode overlay header
 $kennedys-black-tint-05: rgba(16, 24, 32, 0.5);
 
 $kennedys-black-100: rgb(16, 24, 32);

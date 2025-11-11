@@ -27,6 +27,7 @@
         .world-map-wrapper {
             position: relative;
             width: 100%;
+            height: 27vw;
 
             .stats-wrapper {
                 position: absolute;
@@ -60,145 +61,43 @@
             }
 
             // HOVERED OVER REGIONS - FILL SVG COLOURS
-            &.region-canada {.canada .pulse {display:block!important} #canada {fill: $kennedys-red-100}}
-            &.region-usa {.usa .pulse {display:block!important} #usa {fill: $kennedys-red-100}}
-            &.region-uk {.uk .pulse {display:block!important} #uk {fill: $kennedys-blue-100}}
-            &.region-belgium {.belgium .pulse {display:block!important} #belgium {fill: $kennedys-blue-100}}
-            &.region-norway {.norway .pulse {display:block!important} #norway {fill: $kennedys-green-100}}
-            &.region-denmark {.denmark .pulse {display:block!important} #denmark {fill: $kennedys-green-100}}
-            &.region-sweden {.sweden .pulse {display:block!important} #sweden {fill: $kennedys-green-100}}
-            &.region-poland {.poland .pulse {display:block!important} #poland {fill: $kennedys-green-100}}
-            &.region-bermuda {.bermuda .pulse {display:block!important} #bermuda {fill: $kennedys-red-100}}
-            &.region-china {.china .pulse {display:block!important} #china {fill: $kennedys-orange-100}}
-            &.region-hongkong {.hongkong .pulse {display:block!important} #hongkong {fill: $kennedys-orange-100}}
-            &.region-singapore {.singapore .pulse {display:block!important} #singapore {fill: $kennedys-orange-100}}
-            &.region-newzealand {.newzealand .pulse {display:block!important} #newzealand {fill: $kennedys-orange-100}}
-            &.region-australia {.australia .pulse {display:block!important} #australia {fill: $kennedys-orange-100}}
-            &.region-mexico {.mexico .pulse {display:block!important} #mexico {fill: $kennedys-yellow-100}}
-            &.region-guatemala {.guatemala .pulse {display:block!important} #guatemala {fill: $kennedys-yellow-100}}
-            &.region-colombia {.colombia .pulse {display:block!important} #colombia {fill: $kennedys-yellow-100}}
-            &.region-ecuador {.ecuador .pulse {display:block!important} #ecuador {fill: $kennedys-yellow-100}}
-            &.region-peru {.peru .pulse {display:block!important} #peru {fill: $kennedys-yellow-100}}
-            &.region-bolivia {.bolivia .pulse {display:block!important} #bolivia {fill: $kennedys-yellow-100}}
-            &.region-chile {.chile .pulse {display:block!important} #chile {fill: $kennedys-yellow-100}}
-            &.region-ireland {.ireland .pulse {display:block!important} #ireland {fill: $kennedys-green-100}}
-            &.region-france {.france .pulse {display:block!important} #france {fill: $kennedys-green-100}}
-            &.region-spain {.spain .pulse {display:block!important} #spain {fill: $kennedys-green-100}}
-            &.region-italy {.italy .pulse {display:block!important} #italy {fill: $kennedys-green-100}}
-            &.region-dominican {.dominican .pulse {display:block!important} #dominican {fill: $kennedys-yellow-100}}
-            &.region-puertorico {.puertorico .pulse {display:block!important} #puertorico {fill: $kennedys-yellow-100}}
-            &.region-panama {.panama .pulse {display:block!important} #panama {fill: $kennedys-yellow-100}}
-            &.region-brazil {.brazil .pulse {display:block!important} #brazil {fill: $kennedys-yellow-100}}
-            &.region-argentina {.argentina .pulse {display:block!important} #argentina {fill: $kennedys-yellow-100}}
-            &.region-turkey {.turkey .pulse {display:block!important} #turkey {fill: $kennedys-green-100}}
-            &.region-israel {.israel .pulse {display:block!important} #israel {fill: $kennedys-green-100}}
-            &.region-oman {.oman .pulse {display:block!important} #oman {fill: $kennedys-green-100}}
-            &.region-uae {.uae .pulse {display:block!important} #uae {fill: $kennedys-green-100}}
-            &.region-pakistan {.pakistan .pulse {display:block!important} #pakistan {fill: $kennedys-orange-100}}
-            &.region-india {.india .pulse {display:block!important} #india {fill: $kennedys-orange-100}}
+            #usa, #canada, #uk, #belgium, #norway, #denmark, #sweden, #poland, #bermuda,
+            #china, #hongkong, #newzealand, #australia, #mexico, #guatemala,
+            #colombia, #ecuador, #peru, #bolivia, #chile, #ireland, #france, #spain,
+            #italy, #dominican, #puertorico, #panama, #brazil, #argentina, #turkey,
+            #israel, #oman, #uae, #pakistan, #india {
+                opacity: 1;
+            }
             
             // THE MAIN INFO-PANEL REPEATER
             .region-info-panel {
                 position: absolute;
+                z-index: 10;
                 width: 1px;
                 height: auto;
                 padding: 0;
-                color: $kennedys-black-10;
 
-                // COUNTRY POSITIONING
-                &.argentina { bottom: -9%; left: 36.2%; height: 24%; .region-info {margin-top: .04vw!important} }
-                &.australia { bottom: -14%; right: 17%; height: 20% }
-                &.belgium { bottom: 78.7%; left: 48.1%; height: 44%; .region-info {left: -.04vw!important} }
-                &.bermuda { bottom: 62%; left: 24.5%; height: 6%; .dash-two {height: 1.5vw!important} .region-info {left: 1.5vw; margin-top: -.04vw!important} }
-                &.bolivia { bottom: 13%; left: 23.5%; height: 17.5%; .dash-two {height: 4.5vw!important} .region-info {right: 5.6vw!important} }
-                &.brazil { top: 68%; left: 30.5%; .dash-wrapper {height: 2.5vw} .dash-two {height: 3vw!important} .region-info { left: 2.7vw !important; margin-top: .04vw!important} }
-                &.canada { bottom: 85%; left: 16%; height: 30% }
-                &.chile { bottom: 3%; left: 23%; height: 10%; .dash-two {height: 4.5vw!important} .region-info {right: 5.3vw!important; margin-top: .04vw!important} }
-                &.china { bottom: 41%; left: 89%; height: 27%; .dash-two {height:3.5vw!important} }
-                &.colombia { bottom: 8.5%; left: 5.9%; height: 36.5%; .dash-one {height: calc(100% + .2vw)!important} .region-info {right: .7vw!important} }
-                &.denmark { bottom: 80.1%; left: 55.9%; height: 41.5%; .dash-two {height: 3vw!important} .region-info {left: 3.2vw; margin-top: -.04vw!important} }
-                &.dominican { top: 43%; left: 23.5%; .dash-wrapper {height: 2.5vw} .dash-two {height: 3.5vw!important} .region-info { left: 3.5vw !important; margin-top: .04vw!important} }
-                &.ecuador { bottom: 33.5%; left: 19.8%; height: 8%; .dash-two {height: 2.7vw!important} .region-info {right: 3.4vw!important; margin-top: .04vw!important} }
-                &.france { bottom: 51.5%; left: 36%; height: 26.5%; .dash-one {height: calc(100% - 2vw)!important} .region-info {right: -1.8vw!important} }
-                &.guatemala { bottom: 28%; left: 5.9%; height: 26%; .dash-one {height: calc(100% - -.5vw)!important} .region-info {right: .7vw!important} }
-                &.hongkong { bottom: 33.5%; left: 91.5%; height: 26% }
-                &.india { bottom: 32%; left: 70%; height: 29%; .region-info {left: -.07vw!important} }
-                &.ireland { bottom: 80.5%; left: 44%; .dash-wrapper {height: 3vw} .dash-outer-one {height: 4vw!important;} .dash-two {height:1vw!important} .region-info {right: 3.05vw!important; top: 1.6vw!important} }
-                &.israel { bottom: 30%; left: 56%; height: 44%; .dash-two {height: 3vw!important} .region-info {right: 5.6vw!important; top: calc(100% - .3vw)!important} }
-                &.italy { bottom: 63.5%; left: 49.5%; height: 11%; .dash-two {height: 5.5vw!important} .region-info {right: 6.25vw!important} }
-                &.mexico { bottom: 57%; left: 14%; .dash-wrapper {height: 3.5vw} .dash-two {height: 5.5vw!important} .region-info {right: 5.6vw!important} }
-                &.newzealand { bottom: 10.4%; left: 94%; height: 15%; .region-info {left: -.03vw!important} }
-                &.norway { bottom: 83%; left: 56.2%; height: 46%; .dash-two {height:3vw!important} .region-info {left: 3vw; margin-top: -.04vw!important} }
-                &.oman { bottom: 18%; left: 63.2%; height: 41%; .region-info {right: .05vw!important} }
-                &.pakistan { bottom: 18%; left: 67%; height: 49%; .region-info {left: -.07vw!important} }
-                &.panama { top: 50.75%; left: 20.65%; .dash-wrapper {height: 3vw} .dash-two {height: 9vw!important} .region-info { left: 8.7vw !important; margin-top: .04vw!important} }
-                &.peru { bottom: 23%; left: 21.4%; height: 10%; .dash-two {height: 3.5vw!important} .region-info {right:4.4vw!important; margin-top: .04vw!important} }
-                &.poland { bottom: 78.6%; left: 56.3%; height: 28%; .dash-two {height: 3vw!important} .region-info {left: 3vw; margin-top: -.05vw!important} }
-                &.puertorico { top: 43.5%; left: 24.8%; .dash-wrapper {height: 3.7vw} .dash-two {height: 4.5vw!important} .region-info { left: 4.5vw !important; margin-top: .02vw!important} }
-                &.singapore { bottom: 13%; left: 91.5%; height: 31%; .region-info {margin-top: .04vw!important }}
-                &.spain { bottom: 44.5%; left: 34.4%; height: 26.5%; .dash-one {height: calc(100% - 3vw)!important} .region-info {right: -2.8vw!important} }
-                &.sweden { bottom: 87%; left: 55.4%; height: 27%; .dash-two {height: 3.5vw!important} .region-info {left: 3.5vw; margin-top: -.05vw!important} }
-                &.turkey { bottom: 38%; left: 54%; height: 34.5%; .dash-two {height: 2.5vw!important} .region-info {right: 4.4vw!important; top: calc(100% - .25vw)!important} }
-                &.uae { bottom: 48%; left: 64.5%; .dash-wrapper {height: 3.2vw} .dash-outer-one {height: 1.5vw!important;} .dash-outer-two {height: 13.5vw} .region-info {right: .09vw!important; bottom: -12vw!important} }
-                &.uk { bottom: 80%; right: 52.3%; height: 53.5% }
-                &.usa { bottom: 71%; left: 17.6%; height: 63% }
+                &.key {
 
-                // GLOBAL REGION INFO PANEL
-                &.align-left {
-                    
-                    &:has(.key) {
+                    &.align-left {
                         .region-link {
-                            padding-left: .3vw;
+                            padding-left: 1vw;
                             transition: opacity 0.2s ease;
                             &.hidden { opacity: 0; pointer-events: none; }
                         }
                     }
 
-                    .marker-right {display: none;}
-                }
-
-                &.align-right {
-
-                    &:has(.key) {
+                    &.align-right {
                         .region-link {
-                            padding-right: .3vw;
+                            padding-right: 1vw;
                             transition: opacity 0.2s ease;
                             &.hidden { opacity: 0; pointer-events: none; }
                         }
                     }
 
-                    .marker-left {display: none;} 
-                    .region-header {justify-content: flex-end;}
-                }
-
-                .region-info {
-                    width: max-content;
-                    position: absolute;
-                    margin: 0 .65vw;
-                    top: -.01vw;
-                    z-index: 1;
-
-                    .region-header {
-                        margin-bottom: .2vw;
-                        div {margin: 0}
-                        label {
-                            position: relative;
-                            font-size: max(0.4rem, 0.6vw);
-                            margin: .05rem 0 0 0;
-                            display: inline-block;
-                            white-space: nowrap;
-                            cursor: pointer;
-                        }
-                        .marker-large {
-                            width: .55vw; 
-                            height: .55vw;
-                            border-style: solid;
-                            box-sizing: border-box;
-                            border-color: transparent;
-                            border-radius: 50%;
-                            transition: all 2s ease-in-out linear;
-
-                            &.key {
+                    .region-info {
+                        .region-header {
+                            .marker-large {
                                 width: 1.2vw;
                                 border-radius: .2vw;
                                 height: .8vw;
@@ -214,23 +113,111 @@
                                 &.bg-yellow-100:not(.marker-hollow) {
                                     color: $kennedys-black-100;
                                 }
-
                                 // adjust marker pos
                                 &.marker-left {margin: -.15vw .3vw 0 -1.2vw}
                                 &.marker-right {margin: -.15vw -1.25vw 0 .3vw}
                             }
+                        }
+                    }
+                }
+
+                // COUNTRY POSITIONING
+                &.argentina { bottom: -9%; left: 36.2%; height: 24%; .region-info {margin-top: .04vw!important} }
+                &.australia { bottom: -14%; right: 17%; height: 20% }
+                &.belgium { bottom: 78.7%; left: 48.1%; height: 44%; .region-info {left: -.04vw!important} }
+                &.bermuda { bottom: 62%; left: 24.5%; height: 6%; .dash-two {height: 1.5vw!important} .region-info {left: 1.5vw; margin-top: -.04vw!important} }
+                &.bolivia { bottom: 13%; left: 23.5%; height: 17.5%; .dash-two {height: 4.5vw!important} .region-info {right: 5.6vw!important} }
+                &.brazil { top: 68%; left: 30.5%; .dash-wrapper {height: 2.5vw} .dash-two {height: 3vw!important} .region-info { left: 2.7vw !important; margin-top: .04vw!important} }
+                &.canada { bottom: 85%; left: 16%; height: 30% }
+                &.chile { bottom: 3%; left: 23%; height: 10%; .dash-two {height: 4.5vw!important} .region-info {right: 5.3vw!important; margin-top: .04vw!important} }
+                &.china { bottom: 41%; left: 89%; height: 27%; .dash-two {height:3.5vw!important} }
+                &.colombia { bottom: 8.5%; left: 5.9%; height: 36.5%; .dash-one {height: calc(100% + .2vw)!important} .region-info {right: .7vw!important} }
+                &.denmark { bottom: 80.1%; left: 55.9%; height: 41.5%; .dash-two {height: 3vw!important} .region-info {left: 3.2vw; margin-top: -.04vw!important} }
+                &.dominican { top: 43%; left: 23.5%; .dash-wrapper {height: 2.5vw} .dash-two {height: 3.5vw!important} .region-info { left: 3.5vw !important; margin-top: .04vw!important} }
+                &.ecuador { bottom: 33.5%; left: 20%; height: 8%; .dash-two {height: 2.7vw!important} .region-info {right: 3.4vw!important; margin-top: .04vw!important} }
+                &.france { bottom: 51.5%; left: 36%; height: 26.5%; .dash-one {height: calc(100% - 2vw)!important} .region-info {right: -1.8vw!important} }
+                &.guatemala { bottom: 28.7%; left: 5.9%; height: 26%; .dash-one {height: calc(100% - -.5vw)!important} .region-info {right: .7vw!important} }
+                &.hongkong { bottom: 33.5%; left: 91.5%; height: 26% }
+                &.india { bottom: 32%; left: 70%; height: 29%; .region-info {left: -.07vw!important} }
+                &.ireland { bottom: 80.5%; left: 44%; .dash-wrapper {height: 3vw} .dash-outer-one {height: 4vw!important;} .dash-two {height:1vw!important} .region-info {right: 3.05vw!important; top: 1.6vw!important} }
+                &.israel { bottom: 30%; left: 54.05%; height: 37%; .dash-two {height: 2.5vw!important} .region-info {right: 4.45vw!important; top: calc(100% - .27vw)!important} }
+                &.italy { bottom: 63.5%; left: 49.5%; height: 11%; .dash-two {height: 5.5vw!important} .region-info {right: 6.25vw!important} }
+                &.mexico { bottom: 57%; left: 14%; .dash-wrapper {height: 3.5vw} .dash-two {height: 5.5vw!important} .region-info {right: 5.6vw!important} }
+                &.newzealand { bottom: 10.4%; left: 94%; height: 15%; .region-info {left: -.03vw!important} }
+                &.norway { bottom: 83%; left: 56.2%; height: 46%; .dash-two {height:3vw!important} .region-info {left: 3vw; margin-top: -.04vw!important} }
+                &.oman { bottom: 18%; left: 63.2%; height: 41%; .region-info {right: .05vw!important} }
+                &.pakistan { bottom: 18%; left: 67%; height: 49%; .region-info {left: -.07vw!important} }
+                &.panama { top: 50.75%; left: 20.65%; .dash-wrapper {height: 3vw} .dash-two {height: 9vw!important} .region-info { left: 8.7vw !important; margin-top: .04vw!important} }
+                &.peru { bottom: 23%; left: 21.4%; height: 10%; .dash-two {height: 3.5vw!important} .region-info {right:4.4vw!important; margin-top: .04vw!important} }
+                &.poland { bottom: 78.6%; left: 56.3%; height: 28%; .dash-two {height: 3vw!important} .region-info {left: 3vw; margin-top: -.05vw!important} }
+                &.puertorico { top: 43.5%; left: 24.8%; .dash-wrapper {height: 3.7vw} .dash-two {height: 4.5vw!important} .region-info { left: 4.5vw !important; margin-top: .02vw!important} }
+                &.singapore { bottom: 13%; left: 91.5%; height: 31%; .region-info {margin-top: .04vw!important }}
+                &.spain { bottom: 44.5%; left: 34.4%; height: 26.5%; .dash-one {height: calc(100% - 3vw)!important} .region-info {right: -2.8vw!important} }
+                &.sweden { bottom: 87%; left: 55.4%; height: 27%; .dash-two {height: 3.5vw!important} .region-info {left: 3.5vw; margin-top: -.05vw!important} }
+                &.turkey { bottom: 38%; left: 54%; height: 34.5%; .dash-two {height: 2.5vw!important} .region-info {right: 4.4vw!important; top: calc(100% - .25vw)!important} }
+                &.uae { bottom: 48%; left: 64.5%; .dash-wrapper {height: 3.2vw} .dash-outer-one {height: 1.5vw!important;} .dash-outer-two {height: 13.5vw} .region-info {right: .09vw!important; top: 13.4vw!important} }
+                &.uk { bottom: 80%; right: 52.3%; height: 53.5% }
+                &.usa { bottom: 71%; left: 17.6%; height: 63% }
+
+                // GLOBAL REGION INFO PANEL
+                &.align-left {
+                    .marker-right {display: none;}
+
+                    .cities-inner {
+                        padding-right: .5vw;
+                    }
+
+                }
+
+                &.align-right {
+                    .marker-left {display: none;} 
+                    .region-header {justify-content: flex-end;}
+
+                    .cities-inner {
+                        padding-left: .5vw;
+                    }
+                }
+
+                .region-info {
+                    width: max-content;
+                    position: absolute;
+                    margin: 0 .65vw;
+                    top: -.01vw;
+                    z-index: 1;
+
+                    .region-header {
+                        div {margin: 0}
+
+                        label {
+                            position: relative;
+                            font-size: max(0.4rem, 0.6vw);
+                            width: 100%;
+                            margin: .02vw .1vw 0 0;
+                            display: inline-block;
+                            white-space: nowrap;
+                        }
+
+                        .marker-large {
+                            width: .55vw; 
+                            height: .55vw;
+                            border-style: solid;
+                            box-sizing: border-box;
+                            border-color: transparent;
+                            border-radius: 50%;
+                            transition: all 2s ease-in-out linear;
 
                             &.marker-left {margin: 0 .3vw 0 -.865vw}
                             &.marker-right {margin: 0 -.95vw 0 .3vw}
 
                             &.marker-hollow {
                                 border-width: .1vw;
+                                color: $kennedys-black-10;
                             }
 
                             &.bg-orange-100 {&.marker-hollow {border-color: $kennedys-orange-100;}}
                             &.bg-green-100 {&.marker-hollow {border-color: $kennedys-green-100;}}
                             &.bg-yellow-100 {&.marker-hollow {border-color: $kennedys-yellow-100;}}
-                            &.bg-red-100 {&.marker-hollow {border-color: $kennedys-red-100;}}
+                            &.bg-red-100 {color:$kennedys-black-10; &.marker-hollow {border-color: $kennedys-red-100;}}
                             &.bg-blue-100 {&.marker-hollow {border-color: $kennedys-blue-100;}}
                             &.bg-white-100 {&.marker-hollow {border-color: $kennedys-black-10;}}
                             &.bg-white-dashed-100 {&.marker-hollow {border: .9vw dashed $kennedys-black-10;}}
@@ -244,12 +231,13 @@
                         + .dash-wrapper {
                             .dash {
                                 span {
-                                    animation: light-pulse 2s linear infinite;
+                                    animation: light-pulse 2s linear infinite;    
                                 } 
 
                                 @for $i from 1 through 100 {
                                         span:nth-child(#{$i}) {
                                         animation-delay: #{($i - 1) * 0.05}s;
+                                        //transform: scale(1.5);
                                     }
                                 }
 
@@ -480,10 +468,6 @@
                     }
                 }
 
-
-
-                 
-
                 // DASH 20 DEGREES - SINGLE LINE
                 &.dash-angled-solo {
                     .region-info {
@@ -530,7 +514,7 @@
                         width: .2vw; 
                         height: .2vw; 
                         bottom: 0; 
-                        left: -0.15vw;
+                        left: -0.13vw;
 
                         .pulse {
                             position: absolute;
@@ -575,28 +559,1312 @@
                 }
 
                 a {
-                    color: $kennedys-black-25;
+                    color: $kennedys-black-10;
                     font-family: $regular;
                     &.region-link {
                         white-space: nowrap;
+                        line-height: .51vw;
+                        margin: 0 -.7vw;
+                        padding: .2vw .7vw 0 .7vw; 
+
+                        .highlighted {
+                            margin: unset
+                        }
                     }
                 }
+
                 a,
                 strong,
-                label,
-                p {font-size: max(.3rem, $size-small); margin: 0 0 max(.1rem, .16vw) 0}
+                p {
+                    font-size: max(.3rem, $size-small); 
+                }
             }
         }
 
         // WORLD MAP SETTINGS
-        svg.world-map {
+        .backdrop {
+            position: fixed;
+            transition: all .5s ease;
+            opacity: 0;
+            z-index: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: black;
+        }
+
+        .cities {
+            overflow: hidden;
+            .region-link {
+                display: block;
+                transition: opacity 0.25s linear, transform 0.25s ease, filter 0.25s ease;
+
+                &:hover {
+                    transform: scale(1.1);
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // USA
+        .usa .cities {max-height: 6.5vw; .region-link:hover {transform-origin: center left}}
+        .segment-usa {
+            width: 9.7vw; 
+            top: 5.83vw; 
+            left: 5.88vw;
+            transform-origin: 3vw 2vw; // x y
+            svg {stroke-width: 0!important}
+            .bd { // building wrapper for icon and text
+                transform: scale(1.2);
+                &:hover {
+                    transform: scale(2)!important; // must be same as city-* seen below
+                }
+            }
+            .buildings {
+                .austin { margin: 3.5vw 0 0 3.5vw; transform-origin: center left }
+                .chicago { margin: 1.45vw 0 0 4.9vw; flex-direction: row-reverse; transform-origin: center right }
+                .fort-lauderdale { margin: 4vw 0 0 6.4vw; transform-origin: center left }
+                .houston { margin: 3.8vw 0 0 3.9vw; transform-origin: center left }
+                .los-angeles { margin: 3vw 0 0 0.55vw; transform-origin: center left }
+                .miami { margin: 4.5vw 0 0 6.4vw; transform-origin: center left }
+                .new-jersey { margin: 2vw 0 0 7.7vw; transform-origin: center left }
+                .new-york { margin: 1.5vw 0 0 8.3vw; transform-origin: center left }
+                .philadelphia { margin: 1.76vw 0 0 7.9vw; transform-origin: center left }
+                .san-francisco { margin: 2.5vw 0 0 .1vw; transform-origin: center left }
+                .seattle { margin: 0.15vw 0 0 1.15vw; transform-origin: center left }
+                .wilmington { margin: 3vw 0 0 6.9vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-usa { // region class is assigned at the top of the dom
+            &.city-austin .austin,
+            &.city-chicago .chicago,
+            &.city-fort-lauderdale .fort-lauderdale,
+            &.city-houston .houston,
+            &.city-los-angeles .los-angeles,
+            &.city-miami .miami,
+            &.city-new-jersey .new-jersey,
+            &.city-new-york .new-york,
+            &.city-philadelphia .philadelphia,
+            &.city-san-francisco .san-francisco,
+            &.city-seattle .seattle,
+            &.city-wilmington .wilmington {
+                transform: scale(2);
+                opacity: 1!important;
+            }
+            .usa {z-index: 100!important}
+            .backdrop {opacity: .8; z-index: 10;} // fade-in a nice little backdrop
+            .segment-usa { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(2);
+                svg {fill: $kennedys-red-100; stroke-width: 0;}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // CANADA
+        .canada .cities {.region-link:hover {transform-origin: center right}}
+        .segment-canada {
+            width: 11.63vw; 
+            top: 1.69vw; 
+            left: 6.285vw;
+            transform-origin: 6vw 1.7vw; // x y
+            .bd { // building wrapper for icon and text
+                transform: scale(1.41);
+                &:hover {
+                    transform: scale(2.35)!important; // must be same as city-* seen below
+                }
+            }
+            .buildings {
+                .calgary { margin: 3.3vw 0 0 2.5vw; transform-origin: center left }
+                .guelph { margin: 5.1vw 0 0 5.7vw; flex-direction: row-reverse; transform-origin: center right }
+                .kelowna { margin: 3.6vw 0 0 1.47vw; transform-origin: center left }
+                .toronto { margin: 5.15vw 0 0 7.15vw; transform-origin: center left }
+                .vancouver { margin: 3.9vw 0 0 0.9vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-canada { // region class is assigned at the top of the dom
+            &.city-calgary .calgary,
+            &.city-guelph .guelph,
+            &.city-kelowna .kelowna,
+            &.city-toronto .toronto,
+            &.city-vancouver .vancouver {
+                transform: scale(2.35);
+                opacity: 1!important;
+            }
+            .canada {z-index: 100!important} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-canada { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(1.7);
+                svg {fill: $kennedys-red-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // MEXICO
+        .mexico .cities {.region-link:hover {transform-origin: center right}}
+        .segment-mexico {
+            width: 4.75vw; 
+            top: 9.13vw; 
+            left: 6.44vw;
+            transform-origin: 1.5vw 1.5vw; // x y
+            .bd { // building wrapper for icon and text
+                transform: scale(1.2);
+                &:hover {
+                    transform: scale(2)!important; // must be same as city-* seen below
+                }
+            }
+            .buildings {
+                .mexico-city {margin: 2.7vw 0 0 1.1vw; flex-direction: row-reverse; transform-origin: center right }
+            }
+        } // set the default size of the map segment
+        .region-mexico { // region class is assigned at the top of the dom
+            &.city-mexico-city .mexico-city {
+                transform: scale(2);
+                opacity: 1!important;
+            }
+            .mexico {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-mexico { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(2);
+                svg {fill: $kennedys-yellow-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // BERMUDA
+        .segment-bermuda {
+            width: 1vw; 
+            top: 9.8vw; 
+            left: 13vw; 
+            transform-origin: 0.85vw .27vw; // x y
+            svg {stroke-width: 0!important}
+        } // set the default size of the map segment
+        .region-bermuda { // region class is assigned at the top of the dom
+            .bermuda {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-bermuda { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(15);
+                svg {fill: $kennedys-red-100; stroke-width: 0!important}
+            }
+        }
+
+        // UK
+        .uk .cities {max-height: 7vw; .region-link:hover {transform-origin: center right}}
+        .segment-uk { // set the default size of the map segment before scaling
+            width: 1.45vw; 
+            top: 4.05vw; 
+            left: 27vw;
+            transform-origin: .5vw .3vw; // x y
+            svg {stroke-width: 0!important}
+            .bd { // building wrapper for icon and text
+                transform: scale(.3);
+                &:hover {
+                    transform: scale(.5)!important; 
+                }
+            }
+            .buildings {
+                .belfast { margin: .67vw 0 0 .2vw; transform-origin: center left }
+                .birmingham { margin: 1.04vw 0 0 -.8vw; flex-direction: row-reverse; transform-origin: center right }
+                .bristol { margin: 1.33vw 0 0 -.65vw; flex-direction: row-reverse; transform-origin: center right }
+                .cambridge { margin: 1.11vw 0 0 -.42vw; flex-direction: row-reverse; transform-origin: center right }
+                .chelmsford { margin: 1.16vw 0 0 1.22vw; transform-origin: center left }
+                .edinburgh { margin: .41vw 0 0 .7vw; transform-origin: center left }
+                .glasgow { margin: .45vw 0 0 -.89vw; flex-direction: row-reverse; transform-origin: center right }
+                .leeds { margin: .8vw 0 0 .9vw; transform-origin: center left }
+                .london { margin: 1.22vw 0 0 -.145vw; flex-direction: row-reverse; transform-origin: center right }
+                .manchester { margin: .85vw 0 0 -.84vw; flex-direction: row-reverse; transform-origin: center right }
+                .newcastle { margin: .6vw 0 0 -.62vw; flex-direction: row-reverse; transform-origin: center right }
+                .sheffield { margin: .9vw 0 0 .95vw; transform-origin: center left }
+                .taunton { margin: 1.4vw 0 0 .5vw; transform-origin: center left }
+            }
+        } 
+        .region-uk { // region class is assigned at the top of the dom
+            &.city-belfast .belfast,
+            &.city-birmingham .birmingham,
+            &.city-bristol .bristol,
+            &.city-cambridge .cambridge,
+            &.city-chelmsford .chelmsford,
+            &.city-edinburgh .edinburgh,
+            &.city-glasgow .glasgow,
+            &.city-leeds .leeds,
+            &.city-london .london,
+            &.city-manchester .manchester,
+            &.city-newcastle .newcastle,
+            &.city-sheffield .sheffield,
+            &.city-taunton .taunton {
+                transform: scale(.5);
+                opacity: 1!important;
+            }
+            .uk {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-uk { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(8);
+                svg {fill: $kennedys-blue-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // GUATEMALA
+        .segment-guatemala {
+            width: 0.75vw; 
+            top: 12.07vw; 
+            left: 10.02vw;
+            transform-origin: .4vw .4vw; // x y
+        } // set the default size of the map segment
+        .region-guatemala { // region class is assigned at the top of the dom
+            .guatemala {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-guatemala { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(4);
+                svg {fill: $kennedys-yellow-100; stroke-width: 0!important}
+            }
+        }
+
+        // COLOMBIA
+        .colombia .cities {.region-link:hover {transform-origin: center right}}
+        .segment-colombia {
+            width: 2.2vw; 
+            top: 13.2vw; 
+            left: 12.2vw;
+            transform-origin: 1.2vw 1.9vw; // x y
+            .bd {
+                transform: scale(.8);
+                &:hover {
+                    transform: scale(1.33)!important; // must be same as city-* seen below
+                }
+            }
+            .buildings {
+                .bogot {margin: 1.3vw 0 0 .8vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-colombia { // region class is assigned at the top of the dom
+            &.city-bogotá .bogot {
+                transform: scale(1.33);
+                opacity: 1!important;
+            }
+            .colombia {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-colombia { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(3);
+                svg {fill: $kennedys-yellow-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // ECUADOR
+        .ecuador .cities {.region-link:hover {transform-origin: center right}}
+        .segment-ecuador {
+            width: 1.06vw; 
+            top: 15.45vw; 
+            left: 11.87vw;
+            transform-origin: 0.5vw .8vw; // x y
+            .bd {
+                transform: scale(.6);
+                &:hover {
+                    transform: scale(1)!important; // must be same as city-* seen below
+                }
+            }
+            .buildings {
+                .quito {margin: .2vw 0 0 .4vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-ecuador { // region class is assigned at the top of the dom
+            &.city-quito .quito { // when you hover over the city
+                transform: scale(1);
+                opacity: 1!important;
+            }
+            .ecuador {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-ecuador { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(4);
+                svg {fill: $kennedys-yellow-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // PERU
+        .peru .cities {.region-link:hover {transform-origin: center right}}
+        .segment-peru {
+            width: 2.4vw; 
+            top: 15.74vw; 
+            left: 11.8vw;
+            transform-origin: 1.7vw 2.8vw; // x y
+            .bd {
+                transform: scale(1);
+                &:hover {
+                    transform: scale(1.2)!important; // must be same as city-* seen below
+                }
+            }
+            .buildings {
+                .lima {margin: 2.3vw 0 0 0vw; flex-direction: row-reverse; transform-origin: center right }
+            }
+        } // set the default size of the map segment
+        .region-peru { // region class is assigned at the top of the dom
+            &.city-lima .lima { // when you hover over the city
+                transform: scale(1.2);
+                opacity: 1!important;
+            }
+            .peru {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-peru { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(3);
+                svg {fill: $kennedys-yellow-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // BOLIVIA
+        .bolivia .cities {.region-link:hover {transform-origin: center right}}
+        .segment-bolivia {
+            width: 2.3vw; 
+            top: 17.65vw; 
+            left: 13.92vw;
+            transform-origin: 1vw 2vw; // x y
+            .bd {
+                transform: scale(.6);
+                &:hover {
+                    transform: scale(1)!important; // must be same as city-* seen below
+                }
+            }
+            .buildings {
+                .la-paz {margin: 1.3vw 0 0 .35vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-bolivia { // region class is assigned at the top of the dom
+            &.city-la-paz .la-paz { // when you hover over the city
+                transform: scale(1);
+                opacity: 1!important;
+            }
+            .bolivia {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-bolivia { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(4);
+                svg {fill: $kennedys-yellow-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // CHILE
+        .chile .cities {.region-link:hover {transform-origin: center right}}
+        .segment-chile {
+            width: 1.97vw; 
+            top: 19.2vw; 
+            left: 13.92vw;
+            transform-origin: .55vw 5vw; // x y
+            .bd {
+                transform: scale(.8);
+                &:hover {
+                    transform: scale(1.33)!important; // must be same as city-* seen below
+                }
+            }
+            .buildings {
+                .santiago {margin: 3.25vw 0 0 .38vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-chile { // region class is assigned at the top of the dom
+            &.city-santiago .santiago { // when you hover over the city
+                transform: scale(1.33);
+                opacity: 1!important;
+            }
+            .chile {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-chile { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(3);
+                svg {fill: $kennedys-yellow-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // ARGENTINA
+        .argentina .cities {.region-link:hover {transform-origin: center left}}
+        .segment-argentina {
+            width: 2.8vw; 
+            top: 20.1vw; 
+            left: 14.25vw;
+            transform-origin: .9vw 4vw; // x y of map when zoomed
+            .bd {
+                transform: scale(1.2);
+                &:hover {
+                    transform: scale(2)!important; // must be same as city-* seen below
+                }
+            }
+            .buildings {
+                .buenos-aires {margin: 2.5vw 0 0 2vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-argentina { // region class is assigned at the top of the dom
+            &.city-buenos-aires .buenos-aires { // when you hover over the city
+                transform: scale(2);
+                opacity: 1!important;
+            }
+            .argentina {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-argentina { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(2);
+                svg {fill: $kennedys-yellow-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // BRAZIL
+        .brazil .cities {.region-link:hover {transform-origin: center left}}
+        .segment-brazil {
+            width: 7vw; 
+            top: 14.67vw; 
+            left: 13.13vw;
+            transform-origin: 3.5vw 8vw; // x y of map when zoomed
+            .bd {
+                transform: scale(1.2);
+                &:hover {
+                    transform: scale(2)!important; // must be same as city-* seen below
+                }
+            }
+            .buildings {
+                .so-paulo {margin: 3.5vw 0 0 4.5vw; flex-direction: row-reverse; transform-origin: center right }
+            }
+        } // set the default size of the map segment
+        .region-brazil { // region class is assigned at the top of the dom
+            &.city-são-paulo .so-paulo { // when you hover over the city
+                transform: scale(2);
+                opacity: 1!important;
+            }
+            .brazil {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-brazil { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(2);
+                svg {fill: $kennedys-yellow-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+        
+        // PANAMA
+        .segment-panama {
+            width: 1vw; 
+            top: 13.8vw; 
+            left: 11.6vw;
+            svg {stroke-width: 0!important}
+        } // set the default size of the map segment
+        .region-panama { // region class is assigned at the top of the dom
+            .panama {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-panama { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(6);
+                transform-origin: .65vw .07vw; // x y
+                svg {fill: $kennedys-yellow-100; stroke-width: 0!important}
+            }
+        }
+        
+        // PUERTO RICO
+        .segment-puertorico {
+            width: .27vw; 
+            top: 11.64vw; 
+            left: 14.5vw; 
+            transform-origin: .13vw .43vw; // x y
+            svg {stroke-width: 0!important}
+        } // set the default size of the map segment
+        .region-puertorico { // region class is assigned at the top of the dom
+            .puertorico {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-puertorico { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(20);
+                svg {fill: $kennedys-yellow-100; stroke-width: 0!important}
+            }
+        }
+        
+        // DOMINICAN REPUBLIC
+        .segment-dominican {
+            width: 0.6vw; 
+            top: 11.70vw; 
+            left: 13.7vw; 
+            transform-origin: .3vw .28vw; // x y
+            svg {stroke-width: 0!important}
+        } // set the default size of the map segment
+        .region-dominican { // region class is assigned at the top of the dom
+            .dominican {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-dominican { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(15);
+                svg {fill: $kennedys-yellow-100; stroke-width: 0!important}
+            }
+        }
+        
+        // ISREAL
+        .israel .cities {.region-link:hover {transform-origin: center right}}
+        .segment-israel {
+            width: .25vw; 
+            top: 9vw; 
+            left: 34vw;
+            transform-origin: .14vw .5vw; // x y of map when zoomed
+            svg {stroke-width: 0!important}
+            .bd {
+                transform: scale(.24);
+                &:hover {
+                    transform: scale(.4)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .tel-aviv {margin: .2vw 0 0 -1.25vw; flex-direction: row-reverse; transform-origin: center right }
+            }
+        } // set the default size of the map segment
+        .region-israel { // region class is assigned at the top of the dom 
+            &.city-tel-aviv .tel-aviv { // when you hover over the city
+                transform: scale(.4); // city link
+                opacity: 1!important;
+            }
+            .israel {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-israel { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(10);
+                svg {fill: $kennedys-green-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+        
+        // TURKEY
+        .turkey .cities {.region-link:hover {transform-origin: center right}}
+        .segment-turkey {
+            width: 3.1vw; 
+            top: 7.26vw; 
+            left: 32.52vw;
+            svg {stroke-width: 0!important}
+            transform-origin: 1.5vw .7vw; // x y of map when zoomed
+            .bd {
+                transform: scale(.6);
+                &:hover {
+                    transform: scale(1)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .istanbul {margin: .1vw 0 0 -.8vw; flex-direction: row-reverse; transform-origin: center right }
+            }
+        } // set the default size of the map segment
+        .region-turkey { // region class is assigned at the top of the dom 
+            &.city-istanbul .istanbul { // when you hover over the city
+                transform: scale(1); // city link
+                opacity: 1!important;
+            }
+            .turkey {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-turkey { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(4);
+                svg {fill: $kennedys-green-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+        
+        // ITALY
+        .italy .cities {.region-link:hover {transform-origin: center right}}
+        .segment-italy {
+            width: 3.35vw; 
+            top: 5.5vw; 
+            left: 28.57vw;
+            transform: scale(.6); // city link
+            .bd {
+                transform: scale(.4);
+                &:hover {
+                    transform: scale(.67)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .florence {margin: .5vw 0 0 .7vw; transform-origin: center left }
+                .milan {margin: .2vw 0 0 -.7vw; flex-direction: row-reverse; transform-origin: center right }
+                .rome {margin: .9vw 0 0 -.15vw; flex-direction: row-reverse; transform-origin: center right }
+            }
+        } // set the default size of the map segment
+        .region-italy { // region class is assigned at the top of the dom 
+            &.city-florence .florence,
+            &.city-milan .milan,
+            &.city-rome .rome { // when you hover over the city
+                transform: scale(.67); // city link
+                opacity: 1!important;
+            }
+            .italy {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-italy { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(6);
+                transform-origin: 1.2vw 1.1vw; // x y of map when zoomed
+                svg {fill: $kennedys-green-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+        
+        // SPAIN
+        .spain .cities {.region-link:hover {transform-origin: center right}}
+        .segment-spain {
+            width: 2.1vw; 
+            top: 6.91vw; 
+            left: 26.65vw;
+            transform-origin: .8vw 1.1vw; // x y of map when zoomed
+            .bd {
+                transform: scale(.4);
+                &:hover {
+                    transform: scale(.67)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .madrid {margin: .65vw 0 0 .9vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-spain { // region class is assigned at the top of the dom 
+            &.city-madrid .madrid { // when you hover over the city
+                transform: scale(.67); // city link
+                opacity: 1!important;
+            }
+            .spain {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-spain { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(6);
+                svg {fill: $kennedys-green-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+        
+        // FRANCE
+        .france .cities {.region-link:hover {transform-origin: center right}}
+        .segment-france {
+            width: 2vw; 
+            top: 5.48vw; 
+            left: 27.48vw;
+            transform-origin: .8vw 1.1vw; // x y of map when zoomed
+            .bd {
+                transform: scale(.4);
+                &:hover {
+                    transform: scale(.67)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .paris {margin: .5vw 0 0 1.05vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-france { // region class is assigned at the top of the dom 
+            &.city-paris .paris { // when you hover over the city
+                transform: scale(.67); // city link
+                opacity: 1!important;
+            }
+            .france {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-france { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(6);
+                svg {fill: $kennedys-green-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+        
+        // IRELAND
+        .ireland .cities {.region-link:hover {transform-origin: center right}}
+        .segment-ireland {
+            width: .7vw; 
+            top: 4.7vw; 
+            left: 26.7vw;
+            transform-origin: .35vw .4vw; // x y of map when zoomed
+            .bd {
+                transform: scale(.3);
+                &:hover {
+                    transform: scale(.5)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .dublin {margin: .23vw 0 0 .52vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-ireland { // region class is assigned at the top of the dom 
+            &.city-dublin .dublin { // when you hover over the city
+                transform: scale(.5); // city link
+                opacity: 1!important;
+            }
+            .ireland {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-ireland { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(8);
+                svg {fill: $kennedys-green-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+        
+        // BELGIUM
+        .belgium .cities {.region-link:hover {transform-origin: center left}}
+        .segment-belgium {
+            width: .65vw; 
+            top: 5.35vw; 
+            left: 28.55vw;
+            svg {stroke-width: .5!important}
+            transform-origin: .4vw .12vw; // x y of map when zoomed
+            .bd {
+                transform: scale(.24);
+                &:hover {
+                    transform: scale(.4)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .brussels {margin: .08vw 0 0 .35vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-belgium { // region class is assigned at the top of the dom 
+            &.city-brussels .brussels { // when you hover over the city
+                transform: scale(.4); // city link
+                opacity: 1!important;
+            }
+            .belgium {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-belgium { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(10);
+                svg {stroke-width: 0!important}
+                svg {fill: $kennedys-green-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+        
+        // NORWAY
+        .norway .cities {.region-link:hover {transform-origin: center left}}
+        .segment-norway {
+            width: 3.4vw; 
+            top: 1.8vw; 
+            left: 28.85vw;
+            transform-origin: 1.75vw .12vw; // x y of map when zoomed
+            .bd {
+                transform: scale(.8);
+                &:hover {
+                    transform: scale(1.33)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .oslo {margin: 1.8vw 0 0 .8vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-norway { // region class is assigned at the top of the dom 
+            &.city-oslo .oslo { // when you hover over the city
+                transform: scale(1.33); // city link
+                opacity: 1!important;
+            }
+            .norway {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-norway { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(3);
+                svg {fill: $kennedys-green-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+        
+        // DENMARK
+        .denmark .cities {.region-link:hover {transform-origin: center left}}
+        .segment-denmark {
+            width: .75vw; 
+            top: 4.2vw; 
+            left: 29.4vw;
+            svg {stroke-width: 0!important}
+            transform-origin: .2vw .35vw; // x y of map when zoomed
+            .bd {
+                transform: scale(.24);
+                &:hover {
+                    transform: scale(.4)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .copenhagen {margin: .3vw 0 0 .65vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-denmark { // region class is assigned at the top of the dom 
+            &.city-copenhagen .copenhagen { // when you hover over the city
+                transform: scale(.4); // city link
+                opacity: 1!important;
+            }
+            .denmark {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-denmark { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(10);
+                svg {fill: $kennedys-green-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+        
+        // SWEDEN
+        .sweden .cities {.region-link:hover {transform-origin: center left}}
+        .segment-sweden {
+            width: 1.65vw; 
+            top: 2.16vw; 
+            left: 29.75vw;
+            transform-origin: .5vw 1.2vw; // x y of map when zoomed
+            .bd {
+                transform: scale(.6);
+                &:hover {
+                    transform: scale(1)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .stockholm {margin: 1.5vw 0 0 .9vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-sweden { // region class is assigned at the top of the dom 
+            &.city-stockholm .stockholm { // when you hover over the city
+                transform: scale(1); // city link
+                opacity: 1!important;
+            }
+            .sweden {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-sweden { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(4);
+                svg {fill: $kennedys-green-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+        
+        // POLAND
+        .poland .cities {.region-link:hover {transform-origin: center left}}
+        .segment-poland {
+            width: 1.65vw; 
+            top: 4.76vw; 
+            left: 30.25vw;
+            transform-origin: .8vw .6vw; // x y of map when zoomed
+            .bd {
+                transform: scale(.6);
+                &:hover {
+                    transform: scale(1)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .warsaw {margin: .48vw 0 0 1.05vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-poland { // region class is assigned at the top of the dom 
+            &.city-warsaw .warsaw { // when you hover over the city
+                transform: scale(1); // city link
+                opacity: 1!important;
+            }
+            .poland {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-poland { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(4);
+                svg {fill: $kennedys-green-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+        
+        // CHINA
+        .china .cities {max-height: 4vw; .region-link:hover {transform-origin: center left}}
+        .segment-china {
+            width: 9.17vw; 
+            top: 5.01vw; 
+            left: 40.27vw;
+            transform-origin: 5vw 4vw; // x y of map when zoomed
+            .bd {
+                transform: scale(1.2);
+                &:hover {
+                    transform: scale(1.8)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .bejing {margin: 2.7vw 0 0 5.95vw; flex-direction: row-reverse; transform-origin: center right }
+                .guangzhou {margin: 5.65vw 0 0 7.5vw; transform-origin: center left }
+                .haikou {margin: 6.5vw 0 0 6.1vw; flex-direction: row-reverse; transform-origin: center right }
+                .nanjing {margin: 4.5vw 0 0 7vw; flex-direction: row-reverse; transform-origin: center right }
+                .shanghai {margin: 4.9vw 0 0 7.4vw; flex-direction: row-reverse; transform-origin: center right }
+                .shenzhen {margin: 6vw 0 0 7.6vw; transform-origin: center left }
+                .xiamen {margin: 5.4vw 0 0 8.35vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-china { // region class is assigned at the top of the dom 
+            &.city-bejing .bejing,
+            &.city-guangzhou .guangzhou,
+            &.city-haikou .haikou,
+            &.city-nanjing .nanjing,
+            &.city-shanghai .shanghai,
+            &.city-shenzhen .shenzhen,
+            &.city-xiamen .xiamen { // when you hover over the city
+                transform: scale(1.8); // city link
+                opacity: 1!important;
+            }
+            .china {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-china { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(2);
+                svg {fill: $kennedys-orange-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+        
+        // HONG KONG
+        .segment-hongkong {
+            width: .3vw; 
+            top: 11vw; 
+            left: 48vw; 
+            transform-origin: .17vw .33vw; // x y of map when zoomed
+            svg {stroke-width: 0!important;}
+        } // set the default size of the map segment
+        .region-hongkong { // region class is assigned at the top of the dom 
+            .hongkong {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-hongkong { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(20);
+                svg {fill: $kennedys-orange-100; stroke-width: 0}
+            }
+        }
+        
+        // SINGAPORE
+        .segment-singapore {
+            width: .1vw; 
+            top: 15.05vw; 
+            left: 46.6vw; 
+            transform-origin: .045vw .445vw; 
+            svg {stroke-width: 0!important;}
+        } // set the default size of the map segment
+        .region-singapore { // region class is assigned at the top of the dom 
+            .singapore {z-index: 100!important} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-singapore { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(50);
+                svg {fill: $kennedys-orange-100; stroke-width: 0}
+            }
+        }
+
+        // NEW ZEALAND
+        .newzealand .cities {.region-link:hover {transform-origin: center left}}
+        .segment-newzealand {
+            width: 3.2vw; 
+            top: 22.7vw; 
+            left: 54.6vw;
+            transform-origin: 3.45vw .5vw; // x y of map when zoomed
+            .bd {
+                transform: scale(.6);
+                &:hover {
+                    transform: scale(1)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .auckland {margin: .25vw 0 0 1.25vw; flex-direction: row-reverse; transform-origin: center right }
+                .wellington {margin: 1.2vw 0 0 .6vw; flex-direction: row-reverse; transform-origin: center right }
+            }
+        } // set the default size of the map segment
+        .region-newzealand { // region class is assigned at the top of the dom 
+            &.city-auckland .auckland,
+            &.city-wellington .wellington { // when you hover over the city
+                transform: scale(1); // city link
+                opacity: 1!important;
+            }
+            .newzealand {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-newzealand { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(4);
+                svg {fill: $kennedys-orange-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // AUSTRALIA
+        .australia .cities {.region-link:hover {transform-origin: center right}}
+        .segment-australia {
+            width: 7.1vw; 
+            top: 17.9vw; 
+            left: 47.55vw;
+            transform-origin: 3vw 3.5vw; // x y of map when zoomed
+            .bd {
+                transform: scale(1.2);
+                &:hover {
+                    transform: scale(2)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .brisbane {margin: 3vw 0 0 7vw; transform-origin: center right }
+                .melbourne {margin: 5.3vw 0 0 4.8vw; transform-origin: center right }
+                .perth {margin: 3.9vw 0 0 -.5vw; flex-direction: row-reverse; transform-origin: center right }
+                .sydney {margin: 4.5vw 0 0 6.1vw; transform-origin: center right }
+            }
+        } // set the default size of the map segment
+        .region-australia { // region class is assigned at the top of the dom 
+            &.city-brisbane .brisbane,
+            &.city-melbourne .melbourne,
+            &.city-perth .perth,
+            &.city-sydney .sydney { // when you hover over the city
+                transform: scale(2); // city link
+                opacity: 1!important;
+            }
+            .australia {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-australia { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(2);
+                svg {fill: $kennedys-orange-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // INDIA
+        .india .cities {.region-link:hover {transform-origin: center left}}
+        .segment-india {
+            width: 4.96vw; 
+            top: 8.57vw; 
+            left: 40.01vw;
+            transform-origin: 2.1vw 3.5vw; // x y of map when zoomed
+            .bd {
+                transform: scale(1.2);
+                &:hover {
+                    transform: scale(2)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .mumbai {margin: 3.2vw 0 0 -.05vw; flex-direction: row-reverse; transform-origin: center right }
+                .new-delhi {margin: 1vw 0 0 1.2vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-india { // region class is assigned at the top of the dom 
+            &.city-mumbai .mumbai,
+            &.city-new-delhi .new-delhi { // when you hover over the city
+                transform: scale(2); // city link
+                opacity: 1!important;
+            }
+            .india {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-india { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(2);
+                svg {fill: $kennedys-orange-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // PAKISTAN
+        .pakistan .cities {.region-link:hover {transform-origin: center left}}
+        .segment-pakistan {
+            width: 2.8vw; 
+            top: 8.2vw; 
+            left: 38.5vw;
+            transform-origin: .7vw 2.3vw; // x y of map when zoomed
+            .bd {
+                transform: scale(.8);
+                &:hover {
+                    transform: scale(1.33)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .karachi {margin: 2.45vw 0 0 1.27vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-pakistan { // region class is assigned at the top of the dom 
+            &.city-karachi .karachi { // when you hover over the city
+                transform: scale(1.33); // city link
+                opacity: 1!important;
+            }
+            .pakistan {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-pakistan { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(3);
+                svg {fill: $kennedys-orange-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // UAE
+        .uae .cities {.region-link:hover {transform-origin: center right}}
+        .segment-uae {
+            width: .85vw; 
+            top: 10.45vw; 
+            left: 37.11vw;
+            svg {stroke-width: 0!important}
+            transform-origin: .5vw .55vw; // x y of map when zoomed
+            .bd {
+                transform: scale(.34);
+                &:hover {
+                    transform: scale(.57)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .dubai {margin: -.03vw 0 0 .695vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-uae { // region class is assigned at the top of the dom 
+            &.city-dubai .dubai { // when you hover over the city
+                transform: scale(.57); // city link
+                opacity: 1!important;
+            }
+            .uae {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-uae { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(7);
+                svg {fill: $kennedys-green-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        // OMAN
+        .oman .cities {.region-link:hover {transform-origin: center right}}
+        .segment-oman {
+            width: 1.35vw; 
+            top: 10.7vw; 
+            left: 37.26vw;
+            transform-origin: .8vw 1vw; // x y of map when zoomed
+            .bd {
+                transform: scale(.6);
+                &:hover {
+                    transform: scale(1)!important; // hovering over city on the actual map - must be same as city link
+                }
+            }
+            .buildings {
+                .muscat {margin: .17vw 0 0 1vw; transform-origin: center left }
+            }
+        } // set the default size of the map segment
+        .region-oman { // region class is assigned at the top of the dom 
+            &.city-muscat .muscat { // when you hover over the city
+                transform: scale(1); // city link
+                opacity: 1!important;
+            }
+            .oman {z-index: 100!important;} // bring the cities links to the front when region-* is active
+            .backdrop {opacity: .8; z-index: 10} // fade-in a nice little backdrop
+            .segment-oman { // region-* is now active, let's style stuff
+                z-index: 20!important;
+                transform: scale(4);
+                svg {fill: $kennedys-green-100; stroke-width: 0}
+                .buildings {
+                    opacity: 1!important;
+                }
+            }
+        }
+
+        .map-regions {
+            svg {fill: $kennedys-black-50;}
+            .region {
+                position: absolute;
+                z-index: 1;
+                transition: all .5s ease;
+                opacity: .7;
+                cursor: pointer;
+                .buildings {
+                    position: absolute;
+                    z-index: 1;
+                    opacity: 0;
+                    color: $white;
+                    .bd {
+                        position: absolute; 
+                        transition: all .5s ease; opacity: .8; 
+                        &:hover {
+                            transform: scale(2); 
+                            opacity: 1;
+                        }
+                    }
+                    strong {
+                        text-shadow: 0.02vw 0.02vw .03vw rgba(0,0,0,.7);
+                        font-size: .175vw;
+                        margin: .05vw .05vw 0 .05vw;
+                        white-space: nowrap;
+                    }
+                    .material-icons {
+                        text-shadow: 0.02vw 0.02vw .03vw rgba(0,0,0,.7);
+                        font-size: .25vw;
+                        margin: 0 0 0 0;
+                    }
+                }
+            }
+        }
+
+        .map-background {
+            position: absolute;
             width: 100%;
-            height: auto;
-            fill: $kennedys-black-50;
-            stroke: $black;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            stroke-width: 1.5;
+            left: .01vw;
+
+            svg {
+                fill: $kennedys-black-75;
+            }
+        }
+
+        .map-regions,
+        .map-background {
+            svg {
+                width: 100%;
+                height: auto;
+                stroke: $black;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-width: 1.5;
+            }
         }
     }
 }
+
+
