@@ -33,7 +33,10 @@
                 <div class="region-header flex-group flex-start flex-nowrap flex-center">
                     <div 
                         class="marker-large marker-left {{ region.markerBgColor }}"
-                        [ngClass]="{'marker-hollow' : region.markerIsHollow}">
+                        [ngClass]="{
+                            'marker-hollow' : region.markerIsHollow,
+                            'marker-dashed' : region.markerIsDashed
+                        }">
 
                         <span class="matter-count" *ngIf="region.mattersCount !== undefined && (!officeFilter?.type)">
                             {{ region.mattersCount > 999 ? '999+' : region.mattersCount }}
@@ -63,7 +66,10 @@
 
                     <div 
                         class="marker-large marker-right {{ region.markerBgColor }}"
-                        [ngClass]="{'marker-hollow' : region.markerIsHollow}">
+                        [ngClass]="{
+                            'marker-hollow' : region.markerIsHollow,
+                            'marker-dashed' : region.markerIsDashed
+                        }">
 
                         <span class="matter-count" *ngIf="region.mattersCount !== undefined && (!officeFilter?.type)">
                             {{ region.mattersCount > 999 ? '999+' : region.mattersCount }}

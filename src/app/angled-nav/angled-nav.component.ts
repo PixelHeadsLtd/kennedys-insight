@@ -7,7 +7,7 @@ import {
 } from "@progress/kendo-angular-dateinputs";
 import { DOCUMENT } from "@angular/common";
 
-type Theme = "dark-mode" | "light-mode" | "colour-mode";
+type Theme = "dark-mode" | "light-mode";
 const THEME_KEY = "app-theme";
 
 @Component({
@@ -145,7 +145,7 @@ export class AngledNavComponent implements AfterViewInit, OnInit {
     private applyTheme(theme: Theme) {
         this.theme = theme; // keeps radios in sync
         const body = this.doc.body;
-        body.classList.remove("dark-mode", "light-mode", "colour-mode");
+        body.classList.remove("dark-mode", "light-mode");
         body.classList.add(theme);
     }
 
